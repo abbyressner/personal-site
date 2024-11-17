@@ -11,6 +11,14 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        'subtext': "var(--subtext)",
+        'accent': "var(--accent)",
+      },
+      spacing: {
+        sm: '8px',
+        md: '12px',
+        lg: '16px',
+        xl: '24px',
       },
     },
   },
