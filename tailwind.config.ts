@@ -16,6 +16,7 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         'subtext': "var(--subtext)",
+        'body': "var(--body)",
         'accent': "var(--accent)",
       },
       spacing: {

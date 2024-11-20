@@ -4,24 +4,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-  --background: #f8fafc;
+  --background: #f7f8f9;
   --foreground: #0b1a21;
   --subtext: #717171;
+  --body: #4b5563;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0b1a21;
+    --background: #2b2d2e;
     --foreground: #f8fafc;
   }
 }
 body {
-  color: var(--foreground);
   background: var(--background);
   font-family: 'Inter', Helvetica, sans-serif;
 }
-
-.projects a {
-  color: var(--text-neutral-500);
-}
-

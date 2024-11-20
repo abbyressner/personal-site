@@ -8,6 +8,8 @@ const inter = localFont({
   weight: "100 900",
 });
 
+
+
 export const metadata: Metadata = {
   title: "Abigail Ressner"
 };
