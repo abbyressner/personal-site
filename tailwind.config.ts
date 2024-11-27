@@ -7,6 +7,7 @@ export default {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: "class",
   theme: {
     extend: {
       fontFamily: {
@@ -15,9 +16,6 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        'subtext': "var(--subtext)",
-        'body': "var(--body)",
-        'accent': "var(--accent)",
       },
       spacing: {
         sm: '8px',

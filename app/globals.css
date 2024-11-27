@@ -3,20 +3,44 @@
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+
 :root {
   --background: #f7f8f9;
+  --backgroundalt: #ffffff;
   --foreground: #0b1a21;
-  --subtext: #717171;
-  --body: #4b5563;
+  --body: #66707f;
+  --highlight: #00000016;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #2b2d2e;
-    --foreground: #f8fafc;
-  }
+::selection {
+  background: var(--highlight);
 }
+
+html.dark {
+  --background: #27272a;
+  --backgroundalt: #36363b;
+  --foreground: #f8fafce1;
+  --body: #f8fafc86;
+  --highlight: #0a0c0ea4;
+}
+
 body {
   background: var(--background);
+  color: var(--body);
   font-family: 'Inter', Helvetica, sans-serif;
 }
+
+.card {
+  background: var(--background);
+  color: (--foreground);
+}
+
+.dark .card {
+  background: var(--backgroundalt);
+  color: (--foreground);
+}
+
+.heading{
+  color: var(--foreground);
+}
+

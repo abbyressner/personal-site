@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react";
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -8,10 +9,8 @@ const inter = localFont({
   weight: "100 900",
 });
 
-
-
 export const metadata: Metadata = {
-  title: "Abigail Ressner"
+  title: "Abigail Ressner",
 };
 
 export default function RootLayout({
@@ -23,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.ico" />
-        <link rel="stylesheet" href="https://rsms.me/inter/inter.css"/>
+        <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
       </head>
       <body className={`${inter.variable} antialiased`}>
         {children}
