@@ -1,7 +1,6 @@
 import DarkModeToggle from "./DarkModeToggle"; 
 
 export default function Home() {
-  const newLocal = "fixed z-50 text-body w-8 h-8";
   return (
     <div className="font-sans min-h-screen">
       <nav className="p-5 flex flex-row justify-end items-center">
