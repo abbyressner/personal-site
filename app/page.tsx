@@ -1,5 +1,7 @@
 import DarkModeToggle from "./DarkModeToggle"; 
 import Image from "next/image";
+import Links from "./Links";
+
 
 
 export default function Home() {
@@ -7,7 +9,6 @@ export default function Home() {
     <div className="font-sans min-h-screen">
       
       <nav className="p-5 flex flex-row justify-end items-center">
-        {/* TODO: add other buttons(?) */}
         <DarkModeToggle />
       </nav>
 
@@ -29,8 +30,9 @@ export default function Home() {
 
       {/* main content */}
       <main className="max-w-screen-md mx-auto px-4 sm:px-6 md:px-8 space-y-12">
+        
         {/* about me section */}
-        <section id="about">
+        <section>
           <h2 className="heading text-2xl text-foreground font-semibold mb-4">About Me</h2>
           <p className="text-body">
             Hi! My name is Abby. I am currently a second-year student at
@@ -47,7 +49,7 @@ export default function Home() {
           <h2 className="heading text-2xl font-semibold mb-4">Projects</h2>
           <div className="grid gap-8 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
             
-            {/* Personal Website */}
+            {/* card 1 - personal website */}
             <div className="card rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
               <a href="https://github.com/abbyressner/personal-site" target="_blank" rel="noopener noreferrer">
                 <Image
@@ -78,7 +80,7 @@ export default function Home() {
               </a>
             </div>
 
-            {/* Caesar Cipher */}
+            {/* card 2 - caesar cipher */}
             <div className="card rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
               <a href="https://github.com/abbyressner/caesar-cipher" target="_blank" rel="noopener noreferrer">
                 <Image 
@@ -97,7 +99,7 @@ export default function Home() {
               </a>
             </div>
 
-            {/* Pong */}
+            {/* card 3 - pong */}
             <div className="card rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
               <a href="https://github.com/abbyressner/caesar-cipher" target="_blank" rel="noopener noreferrer">
                 <Image
@@ -111,7 +113,7 @@ export default function Home() {
                   <h3 className="heading text-lg text-body2 font-semibold">Pong Game</h3>
                   <p className="mt-2 text-sm">
                     A simple implementation of a Pong game in
-                    <strong className="font-medium hover:text-blue-700 transition duration-200">
+                    <strong className="font-medium hover:text-blue-700 dark:hover:text-blue-600 transition duration-200">
                       {" "}Processing
                     </strong>
                     .
@@ -122,74 +124,8 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Footer */}
+        {/* footer */}
         <footer className="pt-2 pb-8">
-          <ul className="font-sm mt-8 flex flex-col text-neutral-600 md:flex-row space-x-2 dark:text-neutral-300">
-            <li>
-              <a 
-                href="mailto:contactabbyressner@gmail.com"
-                target="_blank"
-                rel="noopener noreferrer" 
-                className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
-              >
-                <Image
-                  src="/email-icon.svg"
-                  width={28}
-                  height={28}
-                  alt="email icon"
-                />
-              </a>
-            </li>
-
-            <li>
-              <a 
-                href="https://linkedin.com/in/abby-ressner"
-                target="_blank"
-                rel="noopener noreferrer" 
-                className="flex items-center transition-all hover:text-neutral-900 dark:hover:text-neutral-100"
-              >
-                <Image
-                  src="/linkedin-icon.svg"
-                  width={28}
-                  height={28}
-                  alt="linkedin icon"
-                />
-              </a>
-            </li>
-
-            <li>
-              <a 
-                href="https://github.com/abbyressner"
-                target="_blank"
-                rel="noopener noreferrer" 
-                className="flex items-center transition-all hover:text-neutral-900 dark:hover:text-neutral-100"
-              >
-                <Image
-                  src="/github-icon.svg"
-                  width={28}
-                  height={28}
-                  alt="github icon"
-                />
-              </a>
-            </li>
-
-            <li>
-              <a 
-                href="https://codepen.io/abbyressner"
-                target="_blank"
-                rel="noopener noreferrer" 
-                className="flex items-center transition-all hover:text-neutral-900 dark:hover:text-neutral-100"
-              >
-                <Image
-                  src="/codepen-icon.svg"
-                  width={28}
-                  height={28}
-                  alt="codepen icon"
-                />
-              </a>
-            </li>
-          </ul>
-
           <p className="text-md text-body2 pt-24">
             © 2024 Abigail Ressner <br />
             <a
