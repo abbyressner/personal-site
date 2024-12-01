@@ -22,8 +22,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <Analytics/>
-        <SpeedInsights/>
+        <Analytics />
+        <SpeedInsights />
         <link rel="icon" href="/favicon.ico" />
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
       </head>
