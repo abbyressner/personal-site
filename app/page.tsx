@@ -2,8 +2,6 @@ import DarkModeToggle from "./DarkModeToggle";
 import Image from "next/image";
 import Links from "./Links";
 
-
-
 export default function Home() {
   return (
     <div className="font-sans min-h-screen">
