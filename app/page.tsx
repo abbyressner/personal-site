@@ -162,6 +162,7 @@ export default function Home() {
                 className="inline-block ml-1"
               />
             </a>
+            <Links />
           </p>
         </footer>
       </main>

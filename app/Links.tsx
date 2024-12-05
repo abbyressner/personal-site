@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 
-const Links = [
+const links = [
   {
     href: "mailto:contactabbyressner@gmail.com",
     src: "/email-icon.svg",
@@ -28,10 +28,10 @@ const Links = [
   },
 ];
 
-const SocialLinks = () => {
+const Links = () => {
   return (
     <ul className="flex flex-row space-x-2">
-      {socialLinks.map((link, index) => (
+      {links.map((link, index) => (
         <li key={index}>
           <a
             href={link.href}
