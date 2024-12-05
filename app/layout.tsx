@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -23,7 +23,6 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <Analytics />
-        <SpeedInsights />
         <link rel="icon" href="/favicon.ico" />
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
       </head>
