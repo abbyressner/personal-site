@@ -11,7 +11,7 @@ export default function Home() {
       </nav>
 
       {/* header */}
-      <header className="max-w-screen-md mx-auto px-4 sm:px-6 md:px-8 pt-32 pb-12 ">
+      <header className="max-w-screen-md mx-auto px-4 sm:px-6 md:px-8 pt-32 pb-12">
         <div className="flex items-center">
           <Image
             src="/my-emoji.png"
@@ -68,7 +68,7 @@ export default function Home() {
         </section>
 
         {/* projects */}
-        <div className="container pb-4">
+        <div className="container pb-3">
           <h2 className="heading text-2xl font-semibold mb-4">Projects</h2>
           <div className="grid gap-8 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
 
@@ -166,6 +166,8 @@ export default function Home() {
           </div>
         </div>
 
+        <Links />
+
         {/* footer */}
         <footer className="pt-2 pb-8">
           <p className="text-md text-body2 pt-24">
@@ -206,7 +208,6 @@ export default function Home() {
                 className="inline-block ml-1"
               />
             </a>
-            <Links />
           </p>
         </footer>
       </main>

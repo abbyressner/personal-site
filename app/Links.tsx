@@ -41,8 +41,8 @@ const Links = () => {
           >
             <Image
               src={link.src}
-              width={20}
-              height={20}
+              width={28}
+              height={28}
               alt={link.alt}
             />
           </a>
