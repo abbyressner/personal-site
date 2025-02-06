@@ -2,8 +2,6 @@ import DarkModeToggle from "./DarkModeToggle";
 import Image from "next/image";
 import Links from "./Links";
 
-
-
 export default function Home() {
   return (
     <div className="font-sans min-h-screen">
@@ -208,6 +206,7 @@ export default function Home() {
                 className="inline-block ml-1"
               />
             </a>
+            <Links />
           </p>
         </footer>
       </main>
