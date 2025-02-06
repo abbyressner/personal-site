@@ -40,7 +40,7 @@ export default function Home() {
             > Grinnell College </a>
             studying Computer Science and Statistics. <br /><br />
             My passion for computer science began the summer after my sophomore year
-            of high school, when I enrolled in Girls Who Code\'s
+            of high school, when I enrolled in Girls Who Code&#39;s
             <a
               href="https://girlswhocode.com/programs/summer-immersion-program/"
               className="font-medium text-body hover:text-teal-500 transition duration-200"
@@ -158,7 +158,7 @@ export default function Home() {
                 <div className="p-4">
                   <h3 className="heading text-lg text-body2 font-semibold">Speed Reader</h3>
                   <p className="mt-2 text-sm">
-                    A Java program of a \"speed reader\" (repo link coming soon).
+                    A Java program of a &quot;speed reader&quot; (repo link coming soon).
                   </p>
                 </div>
               </a>
