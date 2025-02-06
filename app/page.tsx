@@ -149,7 +149,7 @@ export default function Home() {
             <div className="card rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
               <a href="https://github.com/abbyressner" target="_blank" rel="noopener noreferrer">
                 <Image
-                  src="/"
+                  src="/speedreader.gif"
                   width={200}
                   height={112}
                   alt=""
