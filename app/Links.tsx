@@ -31,7 +31,7 @@ const Links = [
 const SocialLinks = () => {
   return (
     <ul className="flex flex-row space-x-2">
-      {socialLinks.map((link, index) => (
+      {Links.map((link, index) => (
         <li key={index}>
           <a
             href={link.href}

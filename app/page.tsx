@@ -1,4 +1,4 @@
-import DarkModeToggle from "./DarkModeToggle"; 
+import DarkModeToggle from "./DarkModeToggle";
 import Image from "next/image";
 import Links from "./Links";
 
@@ -7,7 +7,7 @@ import Links from "./Links";
 export default function Home() {
   return (
     <div className="font-sans min-h-screen">
-      
+
       <nav className="p-5 flex flex-row justify-end items-center">
         <DarkModeToggle />
       </nav>
@@ -15,7 +15,7 @@ export default function Home() {
       {/* header */}
       <header className="max-w-screen-md mx-auto px-4 sm:px-6 md:px-8 pt-32 pb-12 ">
         <div className="flex items-center">
-          <Image 
+          <Image
             src="/my-emoji.png"
             width={64}
             height={64}
@@ -30,17 +30,42 @@ export default function Home() {
 
       {/* main content */}
       <main className="max-w-screen-md mx-auto px-4 sm:px-6 md:px-8 space-y-12">
-        
+
         {/* about me section */}
         <section>
           <h2 className="heading text-2xl text-foreground font-semibold mb-4">About Me</h2>
           <p className="text-body">
             Hi! My name is Abby. I am currently a second-year student at
-            <a 
-              href="https://www.grinnell.edu" 
+            <a
+              href="https://www.grinnell.edu"
               className="font-medium text-body hover:text-red-600 transition duration-200"
-              > Grinnell College </a> 
-            studying Computer Science and Statistics. <br/><br/>
+            > Grinnell College </a>
+            studying Computer Science and Statistics. <br /><br />
+            My passion for computer science began the summer after my sophomore year
+            of high school, when I enrolled in Girls Who Code's
+            <a
+              href="https://girlswhocode.com/programs/summer-immersion-program/"
+              className="font-medium text-body hover:text-teal-500 transition duration-200"
+            > Summer Immersion Program</a>
+            . That experience sparked a love for problem-solving and innovation
+            that continues to drive my academic and professional pursuits today.
+            <br /><br />
+            I am particularly interested in exploring the intersection of AI/ML
+            and bioinformatics. My goal is to contribute to the development of
+            better, more reliable solutions for people living with chronic health
+            conditions.
+            Projects like <a
+              href="https://openaps.org/"
+              className="font-medium text-body hover:text-sky-600 transition duration-200">
+              OpenAPS</a> inspire me to think about how technology can empower
+            individuals and transform healthcare systems.<br /><br />
+            In addition to my academic studies, I am passionate about giving
+            back to the community. Since October 2024, I have been volunteering
+            as a facilitator with Girls Who Code. Through this program, I teach
+            programming fundamentals—such as variables, data types, and more—to
+            middle school girls at Grinnell-Newburg Middle School. It has been
+            incredibly rewarding to help foster the next generation of female
+            programmers.
           </p>
         </section>
 
@@ -48,7 +73,7 @@ export default function Home() {
         <div className="container pb-4">
           <h2 className="heading text-2xl font-semibold mb-4">Projects</h2>
           <div className="grid gap-8 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
-            
+
             {/* card 1 - personal website */}
             <div className="card rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
               <a href="https://github.com/abbyressner/personal-site" target="_blank" rel="noopener noreferrer">
@@ -66,7 +91,7 @@ export default function Home() {
                     <strong className="font-medium text-body hover:text-black dark:hover:text-white transition duration-200">
                       {" "}Next.js{" "}
                     </strong>
-                    and 
+                    and
                     <strong className="font-medium text-body hover:text-sky-400 transition duration-200">
                       {" "}Tailwind CSS
                     </strong>
@@ -82,8 +107,8 @@ export default function Home() {
 
             {/* card 2 - caesar cipher */}
             <div className="card rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
-              <a href="https://github.com/abbyressner/caesar-cipher" target="_blank" rel="noopener noreferrer">
-                <Image 
+              <a href="https://github.com/abbyressner" target="_blank" rel="noopener noreferrer">
+                <Image
                   src="/caesarcipher-cover-2.jpeg"
                   width={200}
                   height={112}
@@ -101,7 +126,7 @@ export default function Home() {
 
             {/* card 3 - pong */}
             <div className="card rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
-              <a href="https://github.com/abbyressner/caesar-cipher" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/abbyressner/pong" target="_blank" rel="noopener noreferrer">
                 <Image
                   src="/pong-cover3.jpeg"
                   width={200}
@@ -121,13 +146,32 @@ export default function Home() {
                 </div>
               </a>
             </div>
+
+            {/* card 4 - speed reader */}
+            <div className="card rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
+              <a href="https://github.com/abbyressner" target="_blank" rel="noopener noreferrer">
+                <Image
+                  src="/"
+                  width={200}
+                  height={112}
+                  alt=""
+                  className="w-full h-28 object-cover"
+                />
+                <div className="p-4">
+                  <h3 className="heading text-lg text-body2 font-semibold">Speed Reader</h3>
+                  <p className="mt-2 text-sm">
+                    A Java program of a "speed reader" (repo link coming soon).
+                  </p>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
 
         {/* footer */}
         <footer className="pt-2 pb-8">
           <p className="text-md text-body2 pt-24">
-            © 2024 Abigail Ressner <br />
+            © 2025 Abigail Ressner <br />
             <a
               href="https://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1"
               className="text-body2 text-sm"
