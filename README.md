@@ -19,4 +19,4 @@
 - Sources of inspiration: [Jake Gutierrez](https://jakegut.com), [Brittany Chiang](https://brittanychiang.com)
 - my high school CS teacher :)
 - my 14-credit schedule in Fall 2024
-- "[productive procrastination](https://solvingprocrastination.com/productive-procrastination/#:~:text=Productive%20procrastination%20(also%20known%20as,much%20more%20important%20upcoming%20exam.)"
+- [productive procrastination](https://solvingprocrastination.com/productive-procrastination/#:~:text=Productive%20procrastination%20also%20known%20as,much%20more%20important%20upcoming%20exam)
