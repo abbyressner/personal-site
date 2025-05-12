@@ -58,12 +58,13 @@ export default function Home() {
               OpenAPS</a> inspire me to think about how technology can empower
             individuals and transform healthcare systems.<br /><br />
             In addition to my academic studies, I am passionate about giving
-            back to the community. Since October 2024, I have been volunteering
-            as a facilitator with Girls Who Code. Through this program, I teach
+            back to the community. From October 2024 to May 2025, I volunteered
+            as a Facilitator with Girls Who Code. Through this program, I tought
             programming fundamentals—such as variables, data types, and more—to
-            middle school girls at Grinnell-Newburg Middle School. It has been
-            incredibly rewarding to help foster the next generation of female
-            programmers.
+            middle school girls at Grinnell-Newburg Middle School every week. 
+            It has been incredibly rewarding to help foster the next generation 
+            of female programmers. This fall, I am looking forward to continuing my 
+            involvement with this program as a Facilitator Lead, handling more administrative, logistical tasks.
           </p>
         </section>
 
@@ -103,26 +104,26 @@ export default function Home() {
               </a>
             </div>
 
-            {/* card 2 - caesar cipher */}
+            {/* card 2 - meditrack */}
             <div className="card rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
-              <a href="https://github.com/abbyressner" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/abbyressner/meditrack" target="_blank" rel="noopener noreferrer">
                 <Image
-                  src="/caesarcipher-cover-2.jpeg"
+                  src="/meditrack.jpeg"
                   width={200}
                   height={112}
-                  alt="Caesar Cipher"
+                  alt="MediTrack"
                   className="w-full h-28 object-cover"
                 />
                 <div className="p-4">
-                  <h3 className="heading text-lg text-body2 font-semibold">Caesar Cipher</h3>
+                  <h3 className="heading text-lg text-body2 font-semibold">MediTrack</h3>
                   <p className="mt-2 text-body text-sm text-justify">
-                    A C program to encrypt and decrypt messages in a CLI using the Caesar Cipher technique.
+                  A responsive web app for tracking medications and supplements, allowing users to log dosages, monitor supply levels, and streamline monthly refills <i>(currently under development)</i>.
                   </p>
                 </div>
               </a>
             </div>
 
-            {/* card 3 - pong */}
+{/*             {/* card 3 - pong 
             <div className="card rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
               <a href="https://github.com/abbyressner/pong" target="_blank" rel="noopener noreferrer">
                 <Image
@@ -143,9 +144,9 @@ export default function Home() {
                   </p>
                 </div>
               </a>
-            </div>
+            </div> */}
 
-            {/* card 4 - speed reader */}
+{/*             {/* card 4 - speed reader 
             <div className="card rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
               <a href="https://github.com/abbyressner" target="_blank" rel="noopener noreferrer">
                 <Image
@@ -162,7 +163,8 @@ export default function Home() {
                   </p>
                 </div>
               </a>
-            </div>
+            </div> 
+            */}
           </div>
         </div>
 
