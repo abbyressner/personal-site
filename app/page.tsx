@@ -33,7 +33,7 @@ export default function Home() {
         <section>
           <h2 className="heading text-2xl text-foreground font-semibold mb-4">About Me</h2>
           <p className="text-body">
-            Hi! My name is Abby. I am currently a second-year student at
+            Hi! My name is Abby. I am a rising third-year student at
             <a
               href="https://www.grinnell.edu"
               className="font-medium text-body hover:text-red-600 transition duration-200"
