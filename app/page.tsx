@@ -116,8 +116,8 @@ export default function Home() {
                 />
                 <div className="p-4">
                   <h3 className="heading text-lg text-body2 font-semibold">MediTrack</h3>
-                  <p className="mt-2 text-body text-sm text-justify">
-                  A responsive web app for tracking medications and supplements, allowing users to log dosages, monitor supply levels, and streamline monthly refills <i>(currently under development)</i>.
+                  <p className="mt-2 text-body text-sm">
+                  A responsive web app for tracking medications and supplements <i>(currently under development)</i>.
                   </p>
                 </div>
               </a>
