@@ -104,14 +104,14 @@ export default function Home() {
               </a>
             </div>
 
-            {/* card 2 - meditrack */}
+            {/* card 2 - refillr */}
             <div className="card rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
-              <a href="https://github.com/abbyressner/meditrack" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/abbyressner/refillr" target="_blank" rel="noopener noreferrer">
                 <Image
-                  src="/meditrack.jpeg"
+                  src="/refillr.jpeg"
                   width={200}
                   height={112}
-                  alt="MediTrack"
+                  alt="refillr"
                   className="w-full h-28 object-cover"
                 />
                 <div className="p-4">
