@@ -3,7 +3,7 @@
 
 **Author**: Abigail (Abby) Ressner
 
-**Link**: https://abigailressner.vercel.app
+**Link**: https://abbyressner.com
 
 **Included Information**: Introduction, Experience, Projects, Skills, Resume, Contact Info
 
