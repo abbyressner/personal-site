@@ -55,12 +55,11 @@ export default function Home() {
             <br /><br />
             
             I’m also passionate about expanding access to computer science education. 
-            Since 2024, I’ve volunteered with 
-            <a
+            Since 2024, I’ve volunteered with <a
               href="https://girlswhocode.com/"
               className="font-medium text-body hover:text-teal-600 transition duration-200"
-            > Girls Who Code</a> 
-            at Grinnell-Newburg Middle School, first as a Volunteer Facilitator teaching programming fundamentals, and now as a Facilitator Lead overseeing logistics, budgeting, and volunteer coordination. 
+            >Girls Who Code
+            </a> at Grinnell-Newburg Middle School, first as a Volunteer Facilitator teaching programming fundamentals, and now as a Facilitator Lead overseeing logistics, budgeting, and volunteer coordination. 
             Helping younger students discover the excitement of computing has been one of the most rewarding parts of my college experience.
             <br /><br />
             
