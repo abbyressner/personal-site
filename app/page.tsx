@@ -29,44 +29,49 @@ export default function Home() {
       {/* main content */}
       <main className="max-w-screen-md mx-auto px-4 sm:px-6 md:px-8 space-y-12">
 
-        {/* about me section */}
-        <section>
-          <h2 className="heading text-2xl text-foreground font-semibold mb-4">About Me</h2>
-          <p className="text-body">
-            Hi! My name is Abby. I am a rising third-year student at
-            <a
-              href="https://www.grinnell.edu"
-              className="font-medium text-body hover:text-red-600 transition duration-200"
-            > Grinnell College </a>
-            studying Computer Science and Statistics. <br /><br />
-            My passion for computer science began the summer after my sophomore year
-            of high school, when I enrolled in Girls Who Code&#39;s
-            <a
-              href="https://girlswhocode.com/programs/summer-immersion-program/"
-              className="font-medium text-body hover:text-teal-500 transition duration-200"
-            > Summer Immersion Program</a>
-            . That experience sparked a love for problem-solving and innovation
-            that continues to drive my academic and professional pursuits today.
-            <br /><br />
-            I am particularly interested in exploring the intersection of AI/ML
-            and bioinformatics. My goal is to contribute to the development of
-            better, more reliable solutions for people living with chronic health
-            conditions.
-            Projects like <a
-              href="https://openaps.org/"
-              className="font-medium text-body hover:text-sky-600 transition duration-200">
-              OpenAPS</a> inspire me to think about how technology can empower
-            individuals and transform healthcare systems.<br /><br />
-            In addition to my academic studies, I am passionate about giving
-            back to the community. From October 2024 to May 2025, I volunteered
-            as a Facilitator with Girls Who Code. Through this program, I tought
-            programming fundamentals—such as variables, data types, and more—to
-            middle school girls at Grinnell-Newburg Middle School every week.
-            It has been incredibly rewarding to help foster the next generation
-            of female programmers. This fall, I am looking forward to continuing my
-            involvement with this program as a Facilitator Lead, handling more administrative, logistical tasks.
-          </p>
-        </section>
+      {/* about me section */}
+      <section>
+        <h2 className="heading text-2xl text-foreground font-semibold mb-4">About Me</h2>
+        <p className="text-body">
+          Hi! I’m Abby — a junior at 
+          <a
+            href="https://www.grinnell.edu"
+            className="font-medium text-body hover:text-red-600 transition duration-200"
+          > Grinnell College</a>, 
+          studying Computer Science with a concentration in Statistics. <br /><br />
+          
+          My passion for technology is rooted in personal experience. 
+          My mom has lived with Type 1 diabetes for most of her life, and growing up, I saw how much her medical devices—from insulin pumps to continuous glucose monitors—shaped her daily life. 
+          Seeing both the power and the limitations of those technologies motivated me from a young age to one day work on them myself, to support her and everyone who depends on reliable health technology.
+          <br /><br />
+          
+          That goal continues to drive everything I do. 
+          I’m particularly interested in software engineering and product design within the health-tech and medical-device space—building intuitive, dependable tools that make managing health easier and less stressful. 
+          One of my recent projects, refillr, 
+          is an iOS app that helps users track and refill their medications and supplements—designed to simplify an everyday process that often gets overlooked.  
+          <br /><br />
+          
+          Outside of my own work, I’m always learning and building through my coursework, including collaborative projects like 
+          <a
+            href="#projects"
+            className="font-medium text-body hover:text-yellow-500 transition duration-200"
+          > Non-Human Vision</a>, 
+          a VR simulation developed in my Software Design & Development course.  
+          <br /><br />
+          
+          Beyond coding, I’m passionate about expanding access to computer science education. 
+          Since 2024, I’ve volunteered with 
+          <a
+            href="https://girlswhocode.com/"
+            className="font-medium text-body hover:text-pink-500 transition duration-200"
+          > Girls Who Code</a> 
+          at Grinnell-Newburg Middle School—first as a Facilitator teaching programming fundamentals, and now as a Facilitator Lead overseeing logistics, budgeting, and volunteer coordination. 
+          Helping younger students discover the excitement of computing has been one of the most rewarding parts of my college experience.
+          <br /><br />
+          
+          Looking ahead, I’m eager to continue exploring opportunities in software development, especially in health-tech and medical-device innovation, while staying open to any field where technology can make a meaningful impact in people’s lives.
+        </p>
+      </section>
 
         {/* projects */}
         <div className="container pb-3">
@@ -115,56 +120,45 @@ export default function Home() {
                   className="w-full h-28 object-cover"
                 />
                 <div className="p-4">
-                  <h3 className="heading text-lg font-semibold">MediTrack</h3>
+                  <h3 className="heading text-lg font-semibold">refillr</h3>
                   <p className="mt-2 text-body text-sm">
-                    A responsive web app for tracking medications and supplements <i>(currently under development)</i>.
+                    An iOS app that helps users track, manage, and refill their medications and supplements with a customizable interface and reliable product data <i>(currently under development)</i>.
                   </p>
                 </div>
               </a>
             </div>
 
-            {/*             {/* card 3 - pong 
+            {/* card 3 - csc324 group project */}
             <div className="card rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
-              <a href="https://github.com/abbyressner/pong" target="_blank" rel="noopener noreferrer">
+              <a href="https://github.com/abbyressner/csc324-group-project" target="_blank" rel="noopener noreferrer">
                 <Image
-                  src="/pong-cover3.jpeg"
-                  width={200}
-                  height={112}
-                  alt="Pong Game"
-                  className="w-full h-28 object-cover"
-                />
-                <div className="p-4">
-                  <h3 className="heading text-lg text-body2 font-semibold">Pong Game</h3>
-                  <p className="mt-2 text-sm">
-                    A simple implementation of a Pong game in
-                    <strong className="font-medium hover:text-blue-700 dark:hover:text-blue-600 transition duration-200">
-                      {" "}Processing
-                    </strong>
-                    .
-                  </p>
-                </div>
-              </a>
-            </div> */}
-
-            {/*             {/* card 4 - speed reader 
-            <div className="card rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
-              <a href="https://github.com/abbyressner" target="_blank" rel="noopener noreferrer">
-                <Image
-                  src="/speedreader.gif"
+                  src="/nonhuman_vision.jpeg"
                   width={200}
                   height={112}
                   alt=""
                   className="w-full h-28 object-cover"
                 />
                 <div className="p-4">
-                  <h3 className="heading text-lg text-body2 font-semibold">Speed Reader</h3>
+                  
+                  <h3 className="heading text-lg text-body2 font-semibold">Non-Human Vision</h3>
                   <p className="mt-2 text-sm">
-                    A Java program of a &quot;speed reader&quot; (repo link coming soon).
+                    Inspired by 
+                    <a
+                      href="https://pubmed.ncbi.nlm.nih.gov/30128137/"
+                      className="font-medium text-body hover:text-yellow-500 transition duration-200">
+                      toBeeView
+                    </a>
+                    — this Unity and C#–based VR experience simulates how animals/insects perceive their surroundings, 
+                    using vision models adapted for the 
+                    <a
+                      href="https://www.meta.com/quest/quest-3/"
+                      className="font-medium text-body hover:text-blue-600 transition duration-200">
+                      Meta Quest 3
+                    </a>.
                   </p>
                 </div>
               </a>
-            </div> 
-            */}
+            </div>
           </div>
         </div>
 
