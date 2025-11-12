@@ -63,7 +63,7 @@ export default function Home() {
             Helping younger students discover the excitement of computing has been one of the most rewarding parts of my college experience.
             <br /><br />
             
-            Looking ahead, I’m eager to continue exploring opportunities in software engineering —especially in health technology—while staying open to any field where technology can make a meaningful impact in people’s lives.
+            Looking ahead, I’m eager to continue exploring opportunities in software engineering—especially in health technology—while staying open to any field where technology can make a meaningful impact in people’s lives.
           </p>
         </section>
 
