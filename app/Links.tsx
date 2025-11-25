@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const links = [
   {
-    href: "mailto:contactabbyressner@gmail.com",
+    href: "mailto:contact@abbyressner.com",
     src: "/email-icon.svg",
     alt: "email icon",
     hoverTextColor: "hover:text-neutral-800 dark:hover:text-neutral-100",
