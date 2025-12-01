@@ -20,7 +20,7 @@ export default function Home() {
             alt="logo"
           />
         </div>
-        <h1 className="heading text-4xl font-bold pt-2">Abigail Ressner</h1>
+        <h1 className="heading text-4xl font-bold pt-2">Abby Ressner</h1>
         <p className="text-xl leading-relaxed">
           Student at Grinnell College
         </p>
