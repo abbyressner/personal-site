@@ -18,7 +18,7 @@
   --text-muted: oklch(97% 0.01 265 / 0.6);
   --accent: oklch(72% 0.15 281.288);
   --accent-hover: oklch(82% 0.12 281.288);
-  --hairline: oklch(97% 0.01 265 / 0.15);
+  --hairline: oklch(97% 0.01 265 / 0); /* fully transparent, per user request 2026-08-18 */
 
   --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
   --font-body: var(--font-noto-sans), ui-sans-serif, system-ui, sans-serif;
@@ -51,7 +51,7 @@
   --text-muted: oklch(20% 0.02 265 / 0.62);
   --accent: oklch(45% 0.17 281.288);
   --accent-hover: oklch(38% 0.17 281.288);
-  --hairline: oklch(20% 0.02 265 / 0.14);
+  --hairline: oklch(20% 0.02 265 / 0); /* fully transparent, per user request 2026-08-18 */
 }
 
 * { box-sizing: border-box; }
@@ -98,6 +98,8 @@ a { color: inherit; }
   display: grid;
   grid-template-columns: 340px 1fr;
   height: 100vh;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .rail {
