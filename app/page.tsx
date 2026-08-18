@@ -1,203 +1,91 @@
+import CursorGlow from "./CursorGlow";
 import DarkModeToggle from "./DarkModeToggle";
-import Image from "next/image";
-import Links from "./Links";
 
 export default function Home() {
   return (
-    <div className="font-sans min-h-screen">
+    <>
+      <CursorGlow />
 
-      <nav className="p-5 flex flex-row justify-end items-center">
-        <DarkModeToggle />
-      </nav>
-
-      {/* header */}
-      <header className="max-w-screen-md mx-auto px-4 sm:px-6 md:px-8 pt-32 pb-12">
-        <div className="flex items-center">
-          <Image
-            src="/my-emoji.png"
-            width={64}
-            height={64}
-            alt="logo"
-          />
-        </div>
-        <h1 className="heading text-4xl font-bold pt-2">Abby Ressner</h1>
-        <p className="text-xl leading-relaxed">
-          Student at Grinnell College
-        </p>
-      </header>
-
-      {/* main content */}
-      <main className="max-w-screen-md mx-auto px-4 sm:px-6 md:px-8 space-y-12">
-
-        {/* about me section */}
-        <section>
-          <h2 className="heading text-2xl text-foreground font-semibold mb-4">About Me</h2>
-          <p className="text-body">
-            Hi! I’m Abby—a junior at 
-            <a
-              href="https://www.grinnell.edu"
-              className="font-medium text-body hover:text-red-600 transition duration-200"
-            > Grinnell College</a>, 
-            studying Computer Science with a concentration in Statistics. <br /><br />
-            
-            My passion for technology is rooted in personal experience. 
-            My mom has lived with Type I diabetes for most of her life, and growing up, I saw how much her medical devices shaped her daily life. 
-            Seeing both the power and the limitations of those technologies motivated me from a young age to one day work on them myself, to support her and everyone who depends on reliable health technology.
-            <br /><br />
-            
-            That goal continues to drive everything I do. 
-            I’m particularly interested in software engineering and product design within the health-tech and medical-device space, building intuitive, dependable tools that make managing health easier and less stressful. 
-            One of my ongoing projects, refillr is an iOS app that helps users track and refill their medications and supplements, designed to simplify an everyday process that often gets overlooked.  
-            <br /><br />
-            
-            Outside of my own work, I’m always learning and building through my coursework, including collaborative projects like Non-Human Vision,
-            a VR simulation my team is currently developing in our Software Design & Development course.  
-            <br /><br />
-            
-            I’m also passionate about expanding access to computer science education. 
-            Since 2024, I’ve volunteered with <a
-              href="https://girlswhocode.com/"
-              className="font-medium text-body hover:text-teal-600 transition duration-200"
-            >Girls Who Code
-            </a> at Grinnell-Newburg Middle School, first as a Volunteer Facilitator teaching programming fundamentals, and now as a Facilitator Lead overseeing logistics, budgeting, and volunteer coordination. 
-            Helping younger students discover the excitement of computing has been one of the most rewarding parts of my college experience.
-            <br /><br />
-            
-            Looking ahead, I’m eager to continue exploring opportunities in software engineering—especially in health technology—while staying open to any field where technology can make a meaningful impact in people’s lives.
-          </p>
-        </section>
-
-        {/* projects */}
-        <div className="container pb-3">
-          <h2 className="heading text-2xl font-semibold mb-4">Projects</h2>
-          <div className="grid gap-8 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
-
-            {/* card 1 - personal website */}
-            <div className="card rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
-              <a href="https://github.com/abbyressner/personal-site" target="_blank" rel="noopener noreferrer">
-                <Image
-                  src="/personalsite-cover1.png"
-                  width={200}
-                  height={112}
-                  alt="Personal Website"
-                  style={{ objectFit: "scale-down" }}
-                />
-                <div className="card p-4">
-                  <h3 className="heading text-lg font-semibold">Personal Website</h3>
-                  <p className="mt-2 text-body text-sm justify-stretch">
-                    A React web app built with
-                    <strong className="font-medium text-body hover:text-black dark:hover:text-white transition duration-200">
-                      {" "}Next.js{" "}
-                    </strong>
-                    and
-                    <strong className="font-medium text-body hover:text-sky-400 transition duration-200">
-                      {" "}Tailwind CSS
-                    </strong>
-                    , deployed with
-                    <strong className="font-medium text-body hover:text-black dark:hover:text-white transition duration-200">
-                      {" "}Vercel
-                    </strong>
-                    .
-                  </p>
-                </div>
-              </a>
+      <div className="shell">
+        <aside className="rail">
+          <div className="rail-top">
+            <div>
+              <h1 className="wordmark">Abby Ressner</h1>
+              <p className="tagline">CS + Statistics @ Grinnell, building software for people who depend on their devices.</p>
             </div>
-
-            {/* card 2 - refillr */}
-            <div className="card rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
-              <a href="https://github.com/abbyressner/refillr" target="_blank" rel="noopener noreferrer">
-                <Image
-                  src="/refillr.jpeg"
-                  width={200}
-                  height={112}
-                  alt="refillr"
-                  className="w-full h-28 object-cover"
-                />
-                <div className="p-4">
-                  <h3 className="heading text-lg font-semibold">refillr</h3>
-                  <p className="mt-2 text-body text-sm">
-                    An iOS app that helps users track, manage, and refill their medications and supplements with a customizable interface and reliable product data.
-                  </p>
-                </div>
-              </a>
-            </div>
-
-            {/* card 3 - csc324 group project */}
-            <div className="card rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105">
-              <a href="https://github.com/abbyressner/csc324-group-project" target="_blank" rel="noopener noreferrer">
-                <Image
-                  src="/nonhuman_vision.jpeg"
-                  width={200}
-                  height={112}
-                  alt="Non-Human Vision"
-                  className="w-full h-28 object-cover"
-                />
-                <div className="p-4">
-                  <h3 className="heading text-lg text-body2 font-semibold">Non-Human Vision</h3>
-                  <p className="mt-2 text-sm">
-                    Inspired by <a
-                      href="https://pubmed.ncbi.nlm.nih.gov/30128137/"
-                      className="font-medium text-body hover:text-yellow-500 transition duration-200">
-                      toBeeView
-                    </a>
-                    — this Unity and C#–based VR experience simulates how animals and insects perceive their surroundings, 
-                    using vision models adapted for the <a
-                      href="https://www.meta.com/quest/quest-3/"
-                      className="font-medium text-body hover:text-blue-600 transition duration-200">
-                      Meta Quest 3
-                    </a>.
-                  </p>
-                </div>
-              </a>
-            </div>
+            <nav>
+              <ul className="nav-list">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+            </nav>
           </div>
-        </div>
+          <div className="rail-bottom">
+            <div className="socials">
+              <a href="mailto:contact@abbyressner.com" aria-label="Email">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M3 6h18v12H3z"/><path d="m3 7 9 6 9-6"/></svg>
+              </a>
+              <a href="https://linkedin.com/in/abby-ressner" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 11v5M8 8v.01M12 16v-3.5a1.5 1.5 0 0 1 3 0V16M12 11.5V16"/></svg>
+              </a>
+              <a href="https://github.com/abbyressner" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2-.2 4.5-1 4.5-4.5a3.5 3.5 0 0 0-1-2.5c.1-.2.4-1.2-.1-2.5 0 0-.8-.3-2.8 1a9.6 9.6 0 0 0-5 0C7.8 5.7 7 6 7 6c-.5 1.3-.2 2.3-.1 2.5A3.5 3.5 0 0 0 6 11c0 3.4 2.5 4.3 4.5 4.5-.3.3-.5.8-.5 1.5V21"/></svg>
+              </a>
+              <a href="https://codepen.io/abbyressner" target="_blank" rel="noopener noreferrer" aria-label="CodePen">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="m12 2 10 6.5v7L12 22 2 15.5v-7L12 2Z"/><path d="M2 8.5 12 15l10-6.5M12 22v-7M2 15.5 12 9l10 6.5"/></svg>
+              </a>
+            </div>
+            <DarkModeToggle />
+          </div>
+        </aside>
 
-        <Links />
+        <main className="content">
+          <section id="about" className="about">
+            <p className="label" style={{ marginBottom: "0.75rem" }}>About</p>
+            <h2>Building for people who depend on their devices</h2>
+            <p>My mom has lived with Type&nbsp;1 diabetes for most of her life. Growing up, I watched her medical devices shape her daily routine — and saw both what they made possible and where they still fell short. That&apos;s where my interest in health-tech started, and it&apos;s stayed the throughline of everything I build since.</p>
+            <p>I&apos;m a junior at <strong>Grinnell College</strong>, studying Computer Science with a concentration in Statistics. Right now I&apos;m most interested in software engineering and product design for the health-tech and medical-device space — tools that make managing health a little less stressful.</p>
+            <p>Since 2024 I&apos;ve also volunteered with <strong>Girls Who Code</strong> at Grinnell-Newburg Middle School, first as a facilitator teaching programming fundamentals, and now leading logistics and volunteer coordination for the chapter.</p>
+          </section>
 
-        {/* footer */}
-        <footer className="pt-2 pb-8">
-          <p className="text-md text-body2 pt-24">
-            © 2025 Abigail Ressner <br />
-            <a
-              href="https://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1"
-              className="text-body2 text-sm"
-              target="_blank"
-              rel="license noopener noreferrer"
-            >
-              Licensed under CC BY-SA 4.0
-            </a>
-            <a
-              href="https://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1"
-              target="_blank"
-              rel="license noopener noreferrer"
-              className="inline-block ml-1"
-            >
-              <Image
-                src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"
-                width={16}
-                height={16}
-                alt="CC"
-                className="inline-block"
-              />
-              <Image
-                src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"
-                width={16}
-                height={16}
-                alt="BY"
-                className="inline-block ml-1"
-              />
-              <Image
-                src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1"
-                width={16}
-                height={16}
-                alt="SA"
-                className="inline-block ml-1"
-              />
-            </a>
-          </p>
-        </footer>
-      </main>
-    </div>
+          <section id="projects">
+            <p className="label" style={{ marginBottom: "0.75rem" }}>Projects</p>
+            <h2 style={{ marginBottom: "1.5rem" }}>Selected work</h2>
+            <div className="cards">
+              <article className="card" tabIndex={0}>
+                <div className="card-top">
+                  <h3>refillr</h3>
+                  <span className="meta">iOS · Swift</span>
+                </div>
+                <p>An iOS app that helps people track, manage, and refill their medications and supplements — a customizable interface backed by reliable product data.</p>
+                <a className="card-link" href="https://github.com/abbyressner/refillr" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
+              </article>
+              <article className="card" tabIndex={0}>
+                <div className="card-top">
+                  <h3>Non-Human Vision</h3>
+                  <span className="meta">Unity · C#</span>
+                </div>
+                <p>A VR experience built for Meta Quest&nbsp;3, simulating how animals and insects perceive their surroundings — inspired by the toBeeView research project, built with a team in Software Design &amp; Development.</p>
+                <a className="card-link" href="https://github.com/abbyressner/csc324-group-project" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
+              </article>
+              <article className="card" tabIndex={0}>
+                <div className="card-top">
+                  <h3>Girls Who Code — Facilitator Lead</h3>
+                  <span className="meta">2024 — present</span>
+                </div>
+                <p>Started as a volunteer facilitator teaching programming fundamentals to middle schoolers; now lead logistics, budgeting, and volunteer coordination for the chapter.</p>
+                <a className="card-link" href="https://girlswhocode.com/" target="_blank" rel="noopener noreferrer">girlswhocode.com →</a>
+              </article>
+            </div>
+          </section>
+
+          <footer id="contact">
+            <p>Say hello at <a href="mailto:contact@abbyressner.com">contact@abbyressner.com</a></p>
+            <p>© 2026 Abigail Ressner</p>
+          </footer>
+        </main>
+      </div>
+    </>
   );
 }
