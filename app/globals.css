@@ -23,6 +23,26 @@
   --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
   --font-body: var(--font-noto-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-noto-mono), ui-monospace, "SF Mono", monospace;
+
+  /* Typography + caret tokens needed by app/TypedIntro.tsx, ported from
+     design-system/tokens/typography.css and effects.css (the brand's one animated element —
+     "use it once, at the top of a page"). Size/leading/tracking are re-scaled for the 340px rail
+     via .hero-intro below; these are the design system's own full-hero defaults. */
+  --weight-body: 400;
+  --weight-display: 700;
+  --weight-display-max: 800;
+  --leading-hero: 0.98;
+  --track-hero: -0.045em;
+  --track-tight: -0.02em;
+  --size-hero: 84px;
+  --size-display: 46px;
+  --caret: var(--text-muted);
+  --caret-blink: 1.06s;
+}
+
+@keyframes ar-caret-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
 }
 
 :root[data-theme="light"] {
@@ -91,12 +111,13 @@ a { color: inherit; }
 
 .rail-top { display: flex; flex-direction: column; gap: 2rem; }
 
-.wordmark { font-size: 1.6rem; }
-.tagline {
-  font-family: var(--font-body);
-  font-weight: 400;
-  color: var(--text-muted);
-  font-size: 0.95rem;
+/* TypedIntro re-scaled from its full-page-hero defaults (84px/46px) to fit the 340px rail —
+   same component, same behavior, just sized for a sidebar instead of a hero. */
+.hero-intro {
+  --size-hero: 1.75rem;
+  --size-display: 1.05rem;
+  --leading-hero: 1.15;
+  --track-hero: -0.02em;
   max-width: 26ch;
 }
 
@@ -260,7 +281,7 @@ footer a:hover { color: var(--accent-hover); }
   .shell { grid-template-columns: 1fr; height: auto; }
   .rail { height: auto; border-right: none; border-bottom: 1px solid var(--hairline); position: sticky; top: 0; background: var(--page); z-index: 2; padding: 1.5rem 1.5rem; }
   .rail-top { flex-direction: row; align-items: center; justify-content: space-between; gap: 1rem; }
-  .tagline, .nav-list { display: none; }
+  .hero-intro > div, .nav-list { display: none; }
   .rail-bottom { flex-direction: row; align-items: center; }
   .content { height: auto; overflow-y: visible; padding: 2.5rem 1.5rem 4rem; }
   #cursor-glow { display: none; }

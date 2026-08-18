@@ -1,5 +1,6 @@
 import CursorGlow from "./CursorGlow";
 import DarkModeToggle from "./DarkModeToggle";
+import TypedIntro from "./TypedIntro";
 
 export default function Home() {
   return (
@@ -9,10 +10,7 @@ export default function Home() {
       <div className="shell">
         <aside className="rail">
           <div className="rail-top">
-            <div>
-              <h1 className="wordmark">Abby Ressner</h1>
-              <p className="tagline">CS + Statistics @ Grinnell, building software for people who depend on their devices.</p>
-            </div>
+            <TypedIntro className="hero-intro" />
             <nav>
               <ul className="nav-list">
                 <li><a href="#about">About</a></li>
