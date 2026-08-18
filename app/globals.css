@@ -293,4 +293,5 @@ footer a:hover { color: var(--accent-hover); }
   #cursor-glow { transition: none; }
   .card, .card::before { transition: none; }
   .card:hover, .card:focus-within { transform: none; }
+  .caret { animation: none; }
 }

@@ -36,6 +36,7 @@ export default function TypedIntro({
 }: TypedIntroProps) {
   const [w, setW] = useState(0);
   const [chars, setChars] = useState(0);
+  const [reducedMotion, setReducedMotion] = useState(false);
   const deleting = useRef(false);
   const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
@@ -47,7 +48,16 @@ export default function TypedIntro({
     [descriptors]
   );
 
+  // Respect prefers-reduced-motion: skip the typing/cycling loop entirely and show the first
+  // descriptor fully typed, statically — matches the gating CursorGlow.tsx already does.
   useEffect(() => {
+    const isReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    setReducedMotion(isReduced);
+    if (isReduced) setChars(seq(0).length);
+  }, [seq]);
+
+  useEffect(() => {
+    if (reducedMotion) return;
     const full = seq(w).length;
     const next = () => {
       if (!deleting.current) {
@@ -65,7 +75,7 @@ export default function TypedIntro({
     };
     next();
     return () => clearTimeout(timer.current);
-  }, [w, chars, holdMs, seq, descriptors.length]);
+  }, [w, chars, holdMs, seq, descriptors.length, reducedMotion]);
 
   const full = seq(w);
   const g = full.startsWith("n") ? 1 : 0;
@@ -114,6 +124,7 @@ export default function TypedIntro({
           {full.slice(g, Math.max(chars, g))}
         </span>
         <span
+          className="caret"
           style={{
             display: "inline-block",
             width: "4px",
