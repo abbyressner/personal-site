@@ -9,15 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "15.5.9",
-    "react": "19.2.1",
-    "react-dom": "19.2.1",
-    "@vercel/analytics": "1.4.1",
-    "@fontsource/inter": "^5.1.0",
     "@fortawesome/fontawesome-svg-core": "^6.7.1",
     "@fortawesome/free-brands-svg-icons": "^6.7.1",
     "@fortawesome/free-regular-svg-icons": "^6.7.1",
-    "@fortawesome/free-solid-svg-icons": "^6.7.1"
+    "@fortawesome/free-solid-svg-icons": "^6.7.1",
+    "@vercel/analytics": "1.4.1",
+    "bmad-method": "^6.10.0",
+    "next": "15.5.9",
+    "react": "19.2.1",
+    "react-dom": "19.2.1"
   },
   "devDependencies": {
     "@types/node": "^20",

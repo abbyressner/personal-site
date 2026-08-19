@@ -1,46 +1,297 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+/*
+  Design system re-skin (2026-08-18). Mockup-C's layout/interaction ported as-is; only fonts and
+  color tokens changed, per design-log decision. Token values sourced from
+  design-system/tokens/colors.css — vendored here rather than imported, since design-system/ is a
+  reference, not the build (see design-system/CLAUDE.md).
+
+  Dark is the default (no [data-theme] attribute); light is an explicit opt-in via
+  [data-theme="light"] on <html>, toggled by DarkModeToggle.tsx.
+*/
 
 :root {
-  --background: #f7f8f9;
-  --backgroundalt: #ffffff;
-  --foreground: #0b1a21;
-  --body: #71717a;
-  --highlight: #00000016;
+  --page: oklch(12.5% 0.032 265); /* tuned over two rounds — kept over the system's oklch(14% 0.08 265) */
+  --text-strong: oklch(97% 0.01 265);
+  --text-muted: oklch(97% 0.01 265 / 0.6);
+  --accent: oklch(72% 0.15 281.288);
+  --accent-hover: oklch(82% 0.12 281.288);
+  --hairline: oklch(97% 0.01 265 / 0); /* fully transparent, per user request 2026-08-18 */
+
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-noto-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-noto-mono), ui-monospace, "SF Mono", monospace;
+
+  /* Typography + caret tokens needed by app/TypedIntro.tsx, ported from
+     design-system/tokens/typography.css and effects.css (the brand's one animated element —
+     "use it once, at the top of a page"). Size/leading/tracking are re-scaled for the 340px rail
+     via .hero-intro below; these are the design system's own full-hero defaults. */
+  --weight-body: 400;
+  --weight-display: 700;
+  --weight-display-max: 800;
+  --leading-hero: 0.98;
+  --track-hero: -0.045em;
+  --track-tight: -0.02em;
+  --size-hero: 84px;
+  --size-display: 46px;
+  --caret: var(--text-muted);
+  --caret-blink: 1.06s;
 }
 
-::selection {
-  background: var(--highlight);
+@keyframes ar-caret-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
 }
 
-html.dark {
-  --background: #27272a;
-  --backgroundalt: #36363b;
-  --foreground: #f8fafce1;
-  --body: #f8fafc86;
-  --highlight: #0a0c0ea4;
+:root[data-theme="light"] {
+  --page: oklch(96% 0.01 265);
+  --text-strong: oklch(20% 0.02 265);
+  --text-muted: oklch(20% 0.02 265 / 0.62);
+  --accent: oklch(45% 0.17 281.288);
+  --accent-hover: oklch(38% 0.17 281.288);
+  --hairline: oklch(20% 0.02 265 / 0); /* fully transparent, per user request 2026-08-18 */
 }
 
+* { box-sizing: border-box; }
+html, body { height: 100%; }
 body {
-  background: var(--background);
-  color: var(--body);
-  font-family: 'Inter', Helvetica, sans-serif;
+  margin: 0;
+  background: var(--page);
+  color: var(--text-strong);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 15.5px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  margin: 0;
+}
+
+a { color: inherit; }
+
+.label {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-hover);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* ---- Layout: left column fixed/static, right column independently scrollable ---- */
+
+.shell {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  height: 100vh;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.rail {
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  border-right: 1px solid var(--hairline);
+}
+
+.rail-top { display: flex; flex-direction: column; gap: 2rem; }
+
+/* TypedIntro re-scaled from its full-page-hero defaults (84px/46px) to fit the 340px rail —
+   same component, same behavior, just sized for a sidebar instead of a hero. */
+.hero-intro {
+  --size-hero: 1.75rem;
+  --size-display: 1.05rem;
+  --leading-hero: 1.15;
+  --track-hero: -0.02em;
+  max-width: 26ch;
+}
+
+.nav-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.9rem; }
+.nav-list a {
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: color 0.2s ease;
+}
+.nav-list a::before {
+  content: "";
+  width: 1.6rem;
+  height: 1px;
+  background: var(--text-muted);
+  transition: background 0.2s ease, width 0.2s ease;
+}
+.nav-list a:hover, .nav-list a:focus-visible { color: var(--text-strong); }
+.nav-list a:hover::before, .nav-list a:focus-visible::before { background: var(--accent-hover); width: 2.4rem; }
+
+.rail-bottom { display: flex; flex-direction: column; gap: 1.25rem; }
+.socials { display: flex; gap: 1.1rem; }
+.socials a {
+  color: var(--text-muted);
+  display: inline-flex;
+  padding: 0.3rem;
+  border-radius: 6px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+.socials a:hover, .socials a:focus-visible { color: var(--accent-hover); background: color-mix(in oklch, var(--accent) 14%, transparent); }
+.socials svg { width: 19px; height: 19px; display: block; }
+
+.content {
+  height: 100vh;
+  overflow-y: auto;
+  padding: 4.5rem 4rem 6rem;
+  scroll-behavior: smooth;
+}
+.content > section { max-width: 640px; margin: 0 auto; }
+.content > section + section { margin-top: 5.5rem; }
+
+section h2 { font-size: 1.5rem; margin-bottom: 1.5rem; }
+
+.about p { margin: 0 0 1.1rem; color: var(--text-strong); }
+.about p:last-child { margin-bottom: 0; }
+.about strong { color: var(--accent-hover); font-weight: 600; }
+
+.cards { display: flex; flex-direction: column; gap: 1.25rem; }
 .card {
-  background: var(--background);
-  color: (--foreground);
+  position: relative;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 1.5rem 1.6rem;
+  overflow: hidden;
+  isolation: isolate;
+  transform: translateY(0) scale(1);
+  box-shadow: 0 0 0 0 transparent;
+  backdrop-filter: blur(0px) saturate(1);
+  -webkit-backdrop-filter: blur(0px) saturate(1);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.4s ease, border-color 0.4s ease,
+    box-shadow 0.4s ease, backdrop-filter 0.4s ease;
 }
 
-.dark .card {
-  background: var(--backgroundalt);
-  color: (--foreground);
+/* liquid-glass hover: slight lighten + blur + barely-noticeable lift */
+.card:hover, .card:focus-within {
+  background: color-mix(in oklch, var(--text-strong) 6%, transparent);
+  border-color: color-mix(in oklch, var(--text-strong) 10%, transparent);
+  transform: translateY(-2px) scale(1.006);
+  backdrop-filter: blur(14px) saturate(1.15);
+  -webkit-backdrop-filter: blur(14px) saturate(1.15);
+  box-shadow:
+    0 12px 28px -16px oklch(0% 0 0 / 0.45),
+    inset 0 1px 0 color-mix(in oklch, var(--text-strong) 12%, transparent),
+    inset 0 0 0 1px color-mix(in oklch, var(--text-strong) 4%, transparent);
 }
 
-.heading{
-  color: var(--foreground);
+/* light ground: mixing --text-strong (dark) into --page reads as a frosted-grey tint rather than
+   a "lighten" — same formula, inverted role, see evolution/specs/2026-08-18-token-mapping.md */
+:root[data-theme="light"] .card:hover, :root[data-theme="light"] .card:focus-within {
+  background: color-mix(in oklch, var(--text-strong) 4%, var(--page));
+  border-color: color-mix(in oklch, var(--text-strong) 8%, transparent);
+  backdrop-filter: blur(14px) saturate(1.1);
+  -webkit-backdrop-filter: blur(14px) saturate(1.1);
+  box-shadow:
+    0 12px 28px -18px oklch(30% 0.03 265 / 0.25),
+    inset 0 1px 0 color-mix(in oklch, white 60%, transparent),
+    inset 0 0 0 1px color-mix(in oklch, var(--text-strong) 3%, transparent);
 }
 
+/* cursor-tracked accent glow, layered under the glass tint.
+   Dark uses --accent (lighter variant) — adding light to a near-black ground reads as a bloom.
+   Light uses --accent-hover (darker/more saturated variant) at a higher mix % — on a near-white
+   ground there's no lightness headroom to add, so it reads as a violet tint instead. See
+   evolution/specs/2026-08-18-token-mapping.md. */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  background: radial-gradient(220px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in oklch, var(--accent) 16%, transparent), transparent 70%);
+}
+:root[data-theme="light"] .card::before {
+  background: radial-gradient(220px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in oklch, var(--accent-hover) 18%, transparent), transparent 70%);
+}
+.card:hover::before, .card:focus-within::before { opacity: 1; }
+
+.card-top { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 0.6rem; }
+.card h3 { font-size: 1.05rem; }
+.card .meta { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); white-space: nowrap; }
+.card p { margin: 0; color: var(--text-muted); font-size: 0.92rem; }
+.card a.card-link {
+  display: inline-block;
+  margin-top: 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--accent-hover);
+  text-decoration: none;
+}
+.card a.card-link:hover, .card a.card-link:focus-visible { text-decoration: underline; }
+
+footer {
+  margin-top: 6rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--hairline);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+footer a { color: var(--text-muted); }
+footer a:hover { color: var(--accent-hover); }
+
+/* ---- Cursor glow: soft trailing light, eased lag, disabled for touch / reduced-motion ---- */
+#cursor-glow {
+  position: fixed;
+  top: 0; left: 0;
+  width: 880px; height: 880px;
+  margin: -440px 0 0 -440px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(circle, color-mix(in oklch, var(--accent) 12%, transparent) 0%, transparent 62%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  will-change: transform;
+}
+:root[data-theme="light"] #cursor-glow {
+  background: radial-gradient(circle, color-mix(in oklch, var(--accent-hover) 12%, transparent) 0%, transparent 62%);
+}
+
+@media (max-width: 860px) {
+  .shell { grid-template-columns: 1fr; height: auto; }
+  .rail { height: auto; border-right: none; border-bottom: 1px solid var(--hairline); position: sticky; top: 0; background: var(--page); z-index: 2; padding: 1.5rem 1.5rem; }
+  .rail-top { flex-direction: row; align-items: center; justify-content: space-between; gap: 1rem; }
+  .hero-intro > div, .nav-list { display: none; }
+  .rail-bottom { flex-direction: row; align-items: center; }
+  .content { height: auto; overflow-y: visible; padding: 2.5rem 1.5rem 4rem; }
+  #cursor-glow { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #cursor-glow { transition: none; }
+  .card, .card::before { transition: none; }
+  .card:hover, .card:focus-within { transform: none; }
+  .caret { animation: none; }
+}
