@@ -314,6 +314,8 @@ footer a:hover { color: var(--accent-hover); }
   .card:hover, .card:focus-within { transform: none; }
   .caret { animation: none; }
   .term-pop, .term-trigger { transition: none; }
+  .disclosure-caret, .disclosure-panel, .disclosure-trigger { transition: none; }
+  .modal-backdrop, .modal { animation: none; }
 }
 
 /* ---- Glossary terms: dotted underline, definition popover stemming from the word ---- */
@@ -371,3 +373,86 @@ footer a:hover { color: var(--accent-hover); }
 .term[data-right] .term-pop::before { left: auto; right: 0.9rem; }
 .term-pop a { color: var(--accent-hover); text-decoration: none; white-space: nowrap; }
 .term-pop a:hover, .term-pop a:focus-visible { text-decoration: underline; }
+
+/* ---- Disclosure: a clickable line of the About section that unfolds a few paragraphs ---- */
+.disclosure { margin: 0 0 1.1rem; }
+.disclosure-trigger {
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  color: var(--text-strong);
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+.disclosure-trigger:hover { color: var(--accent-hover); }
+.disclosure-trigger:focus-visible { outline: 2px solid var(--accent-hover); outline-offset: 3px; border-radius: 3px; }
+.disclosure-caret { width: 0.9em; height: 0.9em; transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+.disclosure[data-open] .disclosure-caret { transform: rotate(180deg); }
+.disclosure-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.disclosure[data-open] .disclosure-panel { grid-template-rows: 1fr; }
+.disclosure-inner { overflow: hidden; }
+.disclosure[data-settled] .disclosure-inner { overflow: visible; }
+.disclosure-inner > p:first-child { margin-top: 1.1rem; }
+.disclosure-inner > p:last-child { margin-bottom: 0; }
+
+/* ---- Modal: the card's hover glass, lifted into a centered dialog over a dimmed page ---- */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: oklch(0% 0 0 / 0.22);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  animation: modal-fade 0.2s ease;
+}
+.modal {
+  width: 100%;
+  max-width: 34rem;
+  max-height: 100%;
+  overflow-y: auto;
+  padding: 1.8rem 2rem 2rem;
+  border-radius: 16px;
+  color: var(--text-strong);
+  background: color-mix(in oklch, var(--page) 72%, transparent);
+  border: 1px solid color-mix(in oklch, var(--text-strong) 12%, transparent);
+  backdrop-filter: blur(24px) saturate(1.15);
+  -webkit-backdrop-filter: blur(24px) saturate(1.15);
+  box-shadow:
+    0 24px 60px -24px oklch(0% 0 0 / 0.5),
+    inset 0 1px 0 color-mix(in oklch, var(--text-strong) 12%, transparent),
+    inset 0 0 0 1px color-mix(in oklch, var(--text-strong) 4%, transparent);
+  animation: modal-rise 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.modal-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
+.modal-head h2 { font-size: 1.25rem; }
+.modal-close {
+  all: unset;
+  cursor: pointer;
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  margin: -0.35rem -0.5rem 0 0;
+  border-radius: 8px;
+  color: var(--text-muted);
+  transition: color 0.2s ease, background 0.2s ease;
+}
+.modal-close svg { width: 16px; height: 16px; }
+.modal-close:hover { color: var(--text-strong); background: color-mix(in oklch, var(--text-strong) 8%, transparent); }
+.modal-close:focus-visible { outline: 2px solid var(--accent-hover); outline-offset: 2px; }
+.modal-body p { margin: 0 0 0.9rem; font-size: 0.95rem; }
+.modal-body p:last-child { margin-bottom: 0; }
+.term-hint { display: block; margin-top: 0.3rem; font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-muted); }
+@keyframes modal-fade { from { opacity: 0; } }
+@keyframes modal-rise { from { opacity: 0; transform: translateY(10px) scale(0.97); } }

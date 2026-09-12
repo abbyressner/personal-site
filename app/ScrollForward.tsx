@@ -13,6 +13,7 @@ export default function ScrollForward() {
     if (!content) return;
     const onWheel = (e: WheelEvent) => {
       if (content.contains(e.target as Node)) return;
+      if (document.documentElement.hasAttribute("data-modal-open")) return;
       // deltaMode 1 = lines (Firefox), 2 = pages; normalise to pixels.
       const scale = e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? content.clientHeight : 1;
       content.scrollBy({ top: e.deltaY * scale, behavior: "instant" });

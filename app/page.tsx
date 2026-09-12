@@ -1,8 +1,19 @@
 import CursorGlow from "./CursorGlow";
 import DarkModeToggle from "./DarkModeToggle";
+import Disclosure from "./Disclosure";
 import ScrollForward from "./ScrollForward";
 import Term from "./Term";
 import TypedIntro from "./TypedIntro";
+
+const t1dExplainer = (
+  <>
+    <p>Type&nbsp;1 diabetes is an autoimmune condition. The immune system destroys the cells in the pancreas that make insulin, the hormone that lets the body use the sugar in its blood. Without insulin the body can&apos;t run, so from diagnosis on, every dose has to come from outside, every day, for life. There is no cure.</p>
+    <p>It is not caused by eating too much sugar, by weight, or by anything a person did. The predisposition is genetic, and what actually triggers it is still not fully understood. It often shows up in childhood but can start at any age.</p>
+    <p>Type&nbsp;2 is a different disease. The body still makes insulin but stops responding to it well. It&apos;s far more common, around nine in ten cases, and it&apos;s what most people picture when they hear &ldquo;diabetes.&rdquo; Genetics and age matter there too; it is not simply a lifestyle verdict, and it isn&apos;t what my mom has.</p>
+    <p>Managing type&nbsp;1 means dosing insulin for every meal, watching glucose around the clock, and correcting in both directions, with no days off. Too little insulin is dangerous over months; too much is dangerous within the hour.</p>
+    <p>I care about the technology that carries that load, and I also try to correct the story people tell about diabetes whenever I get the chance. Most of what I&apos;ve heard about it over the years was wrong, and the assumptions land on real people.</p>
+  </>
+);
 
 export default function Home() {
   return (
@@ -46,8 +57,13 @@ export default function Home() {
           <section id="about" className="about">
             <p className="label">About</p>
             <p>I&apos;m a senior at <strong>Grinnell College</strong> studying computer science with a concentration in statistics (graduating May&nbsp;2027), and I&apos;m looking for a new-grad software or data engineering role in health tech, medical devices, or healthcare more broadly.</p>
-            <p>Why healthcare? My mom has lived with type&nbsp;1 diabetes for most of her life, and growing up I watched how directly her health depended on a stack of devices actually working. The insulin pump, whose algorithm re-evaluates every five minutes and adjusts her basal rate and delivers correction boluses to hold a target glucose, and which, depending on the generation of the system, either kept her steady over the long term or didn&apos;t. The continuous glucose monitor, whose accuracy still varies meaningfully between brands, and within a single sensor between its first day and its last. The new infusion set every few days, the new sensor about every week, and the two-hour warm-up before a fresh one will report anything. The pairing between devices that may or may not work out of the box. Even ordering supplies, through a website that adds friction to something she has no choice but to do.</p>
-            <p>Seeing all of that up close, and watching which parts improved over the years and which stagnated, gave me a close-up view of what still needs to be built in healthcare technology. It&apos;s the reason I built <a href="#projects">refillr</a>, an iOS app for tracking and refilling medications, and the reason I want to keep working on this: better interfaces, better data infrastructure, tools that ease the burden of managing a chronic condition around the clock.</p>
+            <Disclosure label="Why healthcare?">
+              <p>My mom has lived with <Term
+                def="An autoimmune condition where the body stops making insulin entirely. Not caused by diet or lifestyle, and not the same disease as type 2."
+                modal={{ title: "Type 1 diabetes, briefly", content: t1dExplainer }}
+              >type&nbsp;1 diabetes</Term> for most of her life, and growing up I watched how directly her health depended on a stack of devices actually working. The insulin pump, whose algorithm re-evaluates every five minutes and adjusts her basal rate and delivers correction boluses to hold a target glucose, and which, depending on the generation of the system, either kept her steady over the long term or didn&apos;t. The continuous glucose monitor, whose accuracy still varies meaningfully between brands, and within a single sensor between its first day and its last. The new infusion set every few days, the new sensor about every week, and the two-hour warm-up before a fresh one will report anything. The pairing between devices that may or may not work out of the box. Even ordering supplies, through a website that adds friction to something she has no choice but to do.</p>
+              <p>Seeing all of that up close, and watching which parts improved over the years and which stagnated, gave me a close-up view of what still needs to be built in healthcare technology. It&apos;s the reason I built <a href="#projects">refillr</a>, an iOS app for tracking and refilling medications, and the reason I want to keep working on this: better interfaces, better data infrastructure, tools that ease the burden of managing a chronic condition around the clock.</p>
+            </Disclosure>
             <p>This past summer I was a data engineering intern at <strong>Eli Lilly and Company</strong>, on the Consumer Data Engineering team within Business Insights &amp; Analytics, working on how a global team builds <Term def="A dataset built and maintained like a software product: owned, documented, versioned, and reliable enough for other teams to build on.">data products</Term> with <Term def="AI systems that plan and carry out multi-step tasks on their own, calling tools and making decisions along the way, rather than answering a single prompt.">AI agents</Term> in a regulated environment.</p>
             <p>Outside of classes, I&apos;m on the leadership team of <strong>Girls Who Code</strong> at Grinnell; we run a weekly after-school club at the local middle school covering programming fundamentals and robotics, and mostly getting girls excited about computer science.</p>
             <p>I&apos;m available starting June&nbsp;2027.</p>
