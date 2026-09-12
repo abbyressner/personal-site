@@ -166,11 +166,30 @@ a { color: inherit; }
 .content > section { max-width: 640px; margin: 0 auto; }
 .content > section + section { margin-top: 5.5rem; }
 
-section h2 { font-size: 1.5rem; margin-bottom: 1.5rem; }
+/* With the section headlines gone, the mono label is the section heading. */
+.content > section > .label { margin-bottom: 1.25rem; }
+.meta { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); white-space: nowrap; }
 
 .about p { margin: 0 0 1.1rem; color: var(--text-strong); }
 .about p:last-child { margin-bottom: 0; }
-.about strong { color: var(--accent-hover); font-weight: 600; }
+.about strong, .role strong { color: var(--accent-hover); font-weight: 600; }
+
+/* ---- Experience: same header rhythm as a card, but unboxed — it's a record, not a link ---- */
+.role-top { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 0.35rem; }
+.role h3 { font-size: 1.05rem; }
+.role-title { margin: 0 0 1.1rem; color: var(--text-muted); font-size: 0.92rem; }
+.role-points { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.75rem; }
+.role-points li { position: relative; padding-left: 1.15rem; font-size: 0.92rem; color: var(--text-strong); }
+.role-points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 50%;
+  background: var(--accent);
+}
 
 .cards { display: flex; flex-direction: column; gap: 1.25rem; }
 .card {
@@ -239,7 +258,6 @@ section h2 { font-size: 1.5rem; margin-bottom: 1.5rem; }
 
 .card-top { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 0.6rem; }
 .card h3 { font-size: 1.05rem; }
-.card .meta { font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); white-space: nowrap; }
 .card p { margin: 0; color: var(--text-muted); font-size: 0.92rem; }
 .card a.card-link {
   display: inline-block;
@@ -294,4 +312,61 @@ footer a:hover { color: var(--accent-hover); }
   .card, .card::before { transition: none; }
   .card:hover, .card:focus-within { transform: none; }
   .caret { animation: none; }
+  .term-pop, .term-trigger { transition: none; }
 }
+
+/* ---- Glossary terms: dotted underline, definition popover stemming from the word ---- */
+.term { position: relative; display: inline; }
+.term-trigger {
+  all: unset;
+  cursor: help;
+  color: inherit;
+  text-decoration: underline dotted;
+  text-decoration-color: color-mix(in oklch, var(--text-strong) 40%, transparent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.2s ease;
+}
+.term-trigger:hover, .term[data-open] .term-trigger { text-decoration-color: var(--accent-hover); }
+.term-trigger:focus-visible { outline: 2px solid var(--accent-hover); outline-offset: 2px; border-radius: 2px; }
+.term-pop {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 0.6rem);
+  z-index: 5;
+  width: max-content;
+  max-width: min(18rem, calc(100vw - 2rem));
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--text-strong);
+  background: color-mix(in oklch, var(--page) 94%, var(--text-strong));
+  border: 1px solid color-mix(in oklch, var(--text-strong) 12%, transparent);
+  box-shadow: 0 12px 28px -16px oklch(0% 0 0 / 0.45);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(3px);
+  transition: opacity 0.16s ease, transform 0.16s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear 0.16s;
+}
+.term-pop::before {
+  /* the stem: a small diamond on the edge nearest the word */
+  content: "";
+  position: absolute;
+  left: 0.9rem;
+  bottom: -5px;
+  width: 8px;
+  height: 8px;
+  transform: rotate(45deg);
+  background: inherit;
+  border-right: 1px solid color-mix(in oklch, var(--text-strong) 12%, transparent);
+  border-bottom: 1px solid color-mix(in oklch, var(--text-strong) 12%, transparent);
+}
+.term[data-open] .term-pop { opacity: 1; visibility: visible; transform: translateY(0); transition-delay: 0s; }
+.term[data-below] .term-pop { bottom: auto; top: calc(100% + 0.6rem); transform: translateY(-3px); }
+.term[data-below][data-open] .term-pop { transform: translateY(0); }
+.term[data-below] .term-pop::before { bottom: auto; top: -5px; transform: rotate(225deg); }
+.term[data-right] .term-pop { left: auto; right: 0; }
+.term[data-right] .term-pop::before { left: auto; right: 0.9rem; }
+.term-pop a { color: var(--accent-hover); text-decoration: none; white-space: nowrap; }
+.term-pop a:hover, .term-pop a:focus-visible { text-decoration: underline; }

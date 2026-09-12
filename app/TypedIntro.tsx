@@ -27,7 +27,6 @@ export default function TypedIntro({
   descriptors = [
     "engineer",
     "synesthete",
-    "U.S. healthcare system critic",
     "Apple Shortcuts enthusiast",
     "detail-oriented developer",
   ],
