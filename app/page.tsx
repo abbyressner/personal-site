@@ -1,5 +1,6 @@
 import CursorGlow from "./CursorGlow";
 import DarkModeToggle from "./DarkModeToggle";
+import ScrollForward from "./ScrollForward";
 import Term from "./Term";
 import TypedIntro from "./TypedIntro";
 
@@ -7,6 +8,7 @@ export default function Home() {
   return (
     <>
       <CursorGlow />
+      <ScrollForward />
 
       <div className="shell">
         <aside className="rail">
@@ -60,13 +62,13 @@ export default function Home() {
               </div>
               <p className="role-title">Data Engineering Intern · Consumer Data Engineering, Business Insights &amp; Analytics</p>
               <ul className="role-points">
-                <li>Defined AI-assisted development standards for BI&amp;A&apos;s agentic data product initiative: standards that hold up in a regulated, <Term def="Protected Health Information: any health data that can be tied to a person. Regulated under HIPAA in the US, so systems that touch it have strict rules about access, handling, and audit.">PHI</Term>-sensitive environment, with <Term def="Writing a precise, reviewable specification of what a system should do before any code is written, then building (and having AI build) against that spec rather than against a conversation.">spec-driven development</Term> at the core.</li>
-                <li>Evaluated spec-driven development frameworks (Superpowers, GitHub Spec Kit, and the <Term def="An open-source framework for AI-assisted software development. It gives AI agents defined roles (analyst, architect, developer, and so on) and structured workflows so they build from specs and stories rather than free-form prompts." link={{ href: "https://docs.bmad-method.org", label: "Docs" }}>BMad Method</Term>) for enterprise fit and for fit with the team&apos;s existing day-to-day workflows, and made the recommendation the team adopted.</li>
-                <li>Architected and built a BMad module for the team&apos;s <Term def="A cloud platform for storing and processing large datasets, built around Apache Spark. Widely used for enterprise data engineering.">Databricks</Term> data product pipeline, covering the full cycle: vendor intake, <Term def="Comparing a new data source against the existing table structure to see what fits as-is and what needs a new column or table.">schema fit/gap</Term>, spec generation, story creation, review, and <Term def="User Acceptance Testing: the final check where the people who requested the work confirm it does what they asked, before it goes to production.">UAT</Term> sign-off. It replaced a manually maintained, non-version-controlled Excel source-to-target mapping with a human- and machine-readable spec that lives in Git, can be updated by AI, and holds transformation logic out by design, so the spec stays a stable interface between requirements and the downstream <Term def="Extract, Transform, Load: the code that pulls data from a source, reshapes it, and writes it into the destination tables.">ETL</Term> implementation.</li>
-                <li>Estimated by the team&apos;s leads to cut data product delivery time by two to four weeks, by catching mapping discrepancies at spec review rather than at UAT, where a catch sends the modeling team back through a full rework cycle.</li>
-                <li>Built with BMad&apos;s own module-builder tooling; packaged, validated, and wrote cross-platform install scripts for macOS, Linux, and Windows. Delivered on a review branch as a working <Term def="Minimum Viable Product: a first working version with the core functionality in place, built to be tested and extended rather than to be final.">MVP</Term> for the team to carry forward.</li>
-                <li>Wrote and produced a narrated explainer for the module with Remotion and ElevenLabs, storyboarded across nine scenes with an automated layout audit so the design reference couldn&apos;t drift from the video.</li>
-                <li>Worked on a globally distributed agile team of 20+ engineers, tracked in Jira, across roughly 11 vendor sources covering prescription claims, call records, and medication dispense history. Day-to-day in GitHub and Claude Code, with conventional commits and PR review throughout.</li>
+                <li><b>Defined AI-assisted development standards</b> for BI&amp;A&apos;s agentic data product initiative: standards that hold up in a regulated, <Term def="Protected Health Information: any health data that can be tied to a person. Regulated under HIPAA in the US, so systems that touch it have strict rules about access, handling, and audit.">PHI</Term>-sensitive environment, with <Term def="Writing a precise, reviewable specification of what a system should do before any code is written, then building (and having AI build) against that spec rather than against a conversation.">spec-driven development</Term> at the core.</li>
+                <li>Evaluated spec-driven development frameworks (Superpowers, GitHub Spec Kit, and the <Term def="An open-source framework for AI-assisted software development. It gives AI agents defined roles (analyst, architect, developer, and so on) and structured workflows so they build from specs and stories rather than free-form prompts." link={{ href: "https://docs.bmad-method.org", label: "Docs" }}>BMad Method</Term>) for enterprise fit and for fit with the team&apos;s existing day-to-day workflows, and <b>made the recommendation the team adopted</b>.</li>
+                <li><b>Architected and built a BMad module</b> for the team&apos;s <Term def="A cloud platform for storing and processing large datasets, built around Apache Spark. Widely used for enterprise data engineering.">Databricks</Term> data product pipeline, covering the full cycle: vendor intake, <Term def="Comparing a new data source against the existing table structure to see what fits as-is and what needs a new column or table.">schema fit/gap</Term>, spec generation, story creation, review, and <Term def="User Acceptance Testing: the final check where the people who requested the work confirm it does what they asked, before it goes to production.">UAT</Term> sign-off. It replaced a manually maintained, non-version-controlled Excel source-to-target mapping with <b>a human- and machine-readable spec that lives in Git</b>, can be updated by AI, and holds transformation logic out by design, so the spec stays a stable interface between requirements and the downstream <Term def="Extract, Transform, Load: the code that pulls data from a source, reshapes it, and writes it into the destination tables.">ETL</Term> implementation.</li>
+                <li>Estimated by the team&apos;s leads to <b>cut data product delivery time by two to four weeks</b>, by catching mapping discrepancies at spec review rather than at UAT, where a catch sends the modeling team back through a full rework cycle.</li>
+                <li>Built with BMad&apos;s own module-builder tooling; packaged, validated, and wrote cross-platform install scripts for macOS, Linux, and Windows. Delivered on a review branch as a <b>working <Term def="Minimum Viable Product: a first working version with the core functionality in place, built to be tested and extended rather than to be final.">MVP</Term></b> for the team to carry forward.</li>
+                <li>Wrote and produced a narrated explainer for the module with <b>Remotion and ElevenLabs</b>, storyboarded across nine scenes with an automated layout audit so the design reference couldn&apos;t drift from the video.</li>
+                <li>Worked on a <b>globally distributed agile team of 20+ engineers</b>, tracked in Jira, across roughly 11 vendor sources covering prescription claims, call records, and medication dispense history. Day-to-day in <b>GitHub and Claude Code</b>, with conventional commits and PR review throughout.</li>
               </ul>
             </article>
           </section>
@@ -94,7 +96,7 @@ export default function Home() {
           </section>
 
           <footer id="contact">
-            <p>Say hello at <a href="mailto:contact@abbyressner.com" aria-label="Email contact at abbyressner dot com">contact [at] abbyressner.com</a></p>
+            <p>Say hello at <a href="mailto:contact@abbyressner.com" aria-label="Email contact at abbyressner dot com">contact [at] abbyressner [dot] com</a></p>
             <p>© 2026 Abigail Ressner</p>
           </footer>
         </main>

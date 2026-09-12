@@ -172,7 +172,7 @@ a { color: inherit; }
 
 .about p { margin: 0 0 1.1rem; color: var(--text-strong); }
 .about p:last-child { margin-bottom: 0; }
-.about strong, .role strong { color: var(--accent-hover); font-weight: 600; }
+.about strong { color: var(--accent-hover); font-weight: 600; }
 
 /* ---- Experience: same header rhythm as a card, but unboxed — it's a record, not a link ---- */
 .role-top { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 0.35rem; }
@@ -180,6 +180,7 @@ a { color: inherit; }
 .role-title { margin: 0 0 1.1rem; color: var(--text-muted); font-size: 0.92rem; }
 .role-points { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.75rem; }
 .role-points li { position: relative; padding-left: 1.15rem; font-size: 0.92rem; color: var(--text-strong); }
+.role-points b { font-weight: 600; }
 .role-points li::before {
   content: "";
   position: absolute;
