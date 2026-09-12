@@ -382,13 +382,14 @@ footer a:hover { color: var(--accent-hover); }
   align-items: center;
   gap: 0.4rem;
   cursor: pointer;
-  color: var(--text-strong);
-  font-weight: 600;
+  /* a shade lighter than body text, italic: reads as an aside, not a heading */
+  color: color-mix(in oklch, var(--text-strong) 82%, transparent);
+  font-style: italic;
   transition: color 0.2s ease;
 }
 .disclosure-trigger:hover { color: var(--accent-hover); }
 .disclosure-trigger:focus-visible { outline: 2px solid var(--accent-hover); outline-offset: 3px; border-radius: 3px; }
-.disclosure-caret { width: 0.9em; height: 0.9em; transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+.disclosure-caret { width: 0.9em; height: 0.9em; color: inherit; transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
 .disclosure[data-open] .disclosure-caret { transform: rotate(180deg); }
 .disclosure-panel {
   display: grid;

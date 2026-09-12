@@ -32,7 +32,7 @@ export default function Disclosure({ label, children }: { label: string; childre
       >
         {label}
         <svg className="disclosure-caret" viewBox="0 0 16 16" aria-hidden="true">
-          <path d="m4 6 4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="m4 6 4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </button>
       <div id={id} className="disclosure-panel" inert={!open}>
