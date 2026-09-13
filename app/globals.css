@@ -375,7 +375,8 @@ footer a:hover { color: var(--accent-hover); }
 .term-pop a:hover, .term-pop a:focus-visible { text-decoration: underline; }
 
 /* ---- Disclosure: a clickable line of the About section that unfolds a few paragraphs ---- */
-.disclosure { margin: 0 0 1.1rem; }
+/* Tucked under the paragraph before it: pulled up into its bottom margin, a size smaller. */
+.disclosure { margin: -0.55rem 0 1.1rem; }
 .disclosure-trigger {
   all: unset;
   display: inline-flex;
@@ -385,6 +386,7 @@ footer a:hover { color: var(--accent-hover); }
   /* a shade lighter than body text, italic: reads as an aside, not a heading */
   color: color-mix(in oklch, var(--text-strong) 82%, transparent);
   font-style: italic;
+  font-size: 0.9rem;
   transition: color 0.2s ease;
 }
 .disclosure-trigger:hover { color: var(--accent-hover); }
