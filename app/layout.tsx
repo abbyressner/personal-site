@@ -26,6 +26,8 @@ export const metadata: Metadata = {
 
 // Sets data-theme before paint so the initial render matches the stored/system preference —
 // dark is the default (no attribute); light is the opt-in. Mirrors DarkModeToggle.tsx's logic.
+// The attribute it sets is deliberately absent from the server HTML, hence suppressHydrationWarning
+// on <html> (it only covers that element's own attributes, not its children).
 const THEME_INIT_SCRIPT = `(function(){try{var s=localStorage.getItem("theme");var d=s?s==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches;if(!d)document.documentElement.setAttribute("data-theme","light");}catch(e){}})();`;
 
 export default function RootLayout({
@@ -34,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${bricolage.variable} ${notoSans.variable} ${notoSansMono.variable}`}>
+    <html lang="en" className={`${bricolage.variable} ${notoSans.variable} ${notoSansMono.variable}`} suppressHydrationWarning>
       <head>
         <Analytics />
         <link rel="icon" href="/favicon.ico" />
