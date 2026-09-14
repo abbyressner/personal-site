@@ -1,5 +1,5 @@
+import Link from "next/link";
 import CursorGlow from "./CursorGlow";
-import DarkModeToggle from "./DarkModeToggle";
 import Disclosure from "./Disclosure";
 import ScrollForward from "./ScrollForward";
 import Term from "./Term";
@@ -15,6 +15,26 @@ const t1dExplainer = (
   </>
 );
 
+const heroDescriptors = [
+  "engineer",
+  "synesthete",
+  "socialized medicine admirer",
+  "Apple Shortcuts enthusiast",
+  "detail-oriented developer",
+  "open-source contributor",
+  "imposter syndrome's worst nightmare",
+  "sudoku addict",
+  "St. Louisan",
+  "Duolingo chess student",
+  "life-long learner",
+  "pharmacy benefit manager hater",
+  "BMad Method fan",
+  "Dracula theme user",
+];
+
+// These already read as a complete predicate on their own — no "a"/"an" gets typed before them.
+const heroNoArticleDescriptors = ["imposter syndrome's worst nightmare"];
+
 export default function Home() {
   return (
     <>
@@ -24,13 +44,18 @@ export default function Home() {
       <div className="shell">
         <aside className="rail">
           <div className="rail-top">
-            <TypedIntro className="hero-intro" />
+            <TypedIntro
+              className="hero-intro"
+              descriptors={heroDescriptors}
+              noArticleDescriptors={heroNoArticleDescriptors}
+            />
             <nav>
               <ul className="nav-list">
                 <li><a href="#about">About</a></li>
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><Link href="/garden">Garden</Link></li>
               </ul>
             </nav>
           </div>
@@ -49,13 +74,12 @@ export default function Home() {
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="m12 2 10 6.5v7L12 22 2 15.5v-7L12 2Z"/><path d="M2 8.5 12 15l10-6.5M12 22v-7M2 15.5 12 9l10 6.5"/></svg>
               </a>
             </div>
-            <DarkModeToggle />
           </div>
         </aside>
 
         <main className="content">
           <section id="about" className="about">
-            <p className="label">About</p>
+            <h2 className="label">About</h2>
             <p>I&apos;m a senior at <strong>Grinnell College</strong> studying computer science with a concentration in statistics (graduating May&nbsp;2027), and I&apos;m looking for a new-grad software or data engineering role in health tech, medical devices, or healthcare more broadly.</p>
             <Disclosure label="Why healthcare?">
               <p>My mom has lived with <Term
@@ -70,7 +94,7 @@ export default function Home() {
           </section>
 
           <section id="experience">
-            <p className="label">Experience</p>
+            <h2 className="label">Experience</h2>
             <article className="role">
               <div className="role-top">
                 <h3>Eli Lilly and Company</h3>
@@ -90,7 +114,7 @@ export default function Home() {
           </section>
 
           <section id="projects">
-            <p className="label">Projects</p>
+            <h2 className="label">Projects</h2>
             <div className="cards">
               <article className="card" tabIndex={0}>
                 <div className="card-top">

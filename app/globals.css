@@ -45,6 +45,17 @@
   50%, 100% { opacity: 0; }
 }
 
+/* Pixel-garden accent palette — the one deliberate departure from the single-indigo-accent rule,
+   confined to the hand-built pixel-art illustration on /garden. Same lightness/chroma register in
+   both themes since it's a small decorative graphic, not text. */
+:root {
+  --pixel-purple: oklch(65% 0.18 300);
+  --pixel-pink: oklch(75% 0.15 350);
+  --pixel-green: oklch(70% 0.16 145);
+  --pixel-orange: oklch(75% 0.15 55);
+  --pixel-yellow: oklch(80% 0.16 95);
+}
+
 :root[data-theme="light"] {
   --page: oklch(96% 0.01 265);
   --text-strong: oklch(20% 0.02 265);
@@ -280,6 +291,135 @@ footer {
 footer a { color: var(--text-muted); }
 footer a:hover { color: var(--accent-hover); }
 
+/* ---- Fixed top-right toolbar: dark-mode toggle + accessibility menu, stacked ---- */
+.a11y-toolbar {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.6rem;
+}
+.icon-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem;
+  border-radius: 999px;
+  color: var(--text-muted);
+  background: var(--page);
+  border: 1px solid var(--hairline);
+  cursor: pointer;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+.icon-toggle:hover, .icon-toggle:focus-visible { color: var(--accent-hover); }
+
+/* ---- Accessibility menu: a disclosure panel of independent toggles, not a full ARIA menu ---- */
+.a11y-menu { position: relative; }
+.a11y-panel {
+  position: absolute;
+  top: calc(100% + 0.6rem);
+  right: 0;
+  z-index: 10;
+  width: 15.5rem;
+  padding: 0.9rem;
+  border-radius: 12px;
+  background: var(--page);
+  border: 1px solid color-mix(in oklch, var(--text-strong) 12%, transparent);
+  box-shadow: 0 12px 28px -16px oklch(0% 0 0 / 0.45);
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.a11y-panel-title {
+  margin: 0 0 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.a11y-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.5rem 0.4rem;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.a11y-row:hover, .a11y-row:focus-visible { background: color-mix(in oklch, var(--accent) 10%, transparent); }
+.a11y-row-label, .a11y-row-desc { display: block; }
+.a11y-row-label { font-size: 0.85rem; color: var(--text-strong); }
+.a11y-row-desc { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.1rem; }
+.a11y-switch {
+  flex-shrink: 0;
+  width: 2.1rem;
+  height: 1.15rem;
+  border-radius: 999px;
+  background: color-mix(in oklch, var(--text-muted) 35%, transparent);
+  position: relative;
+  transition: background 0.2s ease;
+}
+.a11y-switch::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: calc(1.15rem - 4px);
+  height: calc(1.15rem - 4px);
+  border-radius: 50%;
+  background: var(--page);
+  transition: transform 0.2s ease;
+}
+.a11y-row[aria-checked="true"] .a11y-switch { background: var(--accent); }
+.a11y-row[aria-checked="true"] .a11y-switch::before { transform: translateX(calc(2.1rem - 1.15rem)); }
+
+@media (max-width: 400px) {
+  .a11y-panel { width: calc(100vw - 3rem); }
+}
+
+/* Dyslexia-friendly font — self-hosted OpenDyslexic (see layout.tsx), swapped in for both display
+   and body type so the whole page reads consistently, not just headings or just paragraphs. */
+:root[data-font="dyslexic"] {
+  --font-display: var(--font-opendyslexic), var(--font-noto-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-opendyslexic), var(--font-noto-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Larger text — scales the rem-based type scale used almost everywhere (root font-size) and also
+   bumps body's own absolute px size directly, since body sets a fixed 15.5px that rem scaling
+   alone wouldn't touch (most flowing paragraph copy inherits that value rather than setting its
+   own rem size). */
+:root[data-text-size="large"] { font-size: 118%; }
+:root[data-text-size="large"] body { font-size: 19px; line-height: 1.85; }
+
+/* High contrast — stronger muted-text opacity, a visible hairline (normally fully transparent by
+   design), and underlined inline links so they don't rely on color alone. */
+:root[data-contrast="high"] {
+  --text-muted: oklch(97% 0.01 265 / 0.92);
+  --hairline: oklch(97% 0.01 265 / 0.45);
+}
+:root[data-theme="light"][data-contrast="high"] {
+  --text-muted: oklch(20% 0.02 265 / 0.92);
+  --hairline: oklch(20% 0.02 265 / 0.45);
+}
+:root[data-contrast="high"] .about a,
+:root[data-contrast="high"] .disclosure-inner a,
+:root[data-contrast="high"] footer a,
+:root[data-contrast="high"] .modal-body a,
+:root[data-contrast="high"] .term-pop a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 /* ---- Cursor glow: soft trailing light, eased lag, disabled for touch / reduced-motion ---- */
 #cursor-glow {
   position: fixed;
@@ -317,6 +457,19 @@ footer a:hover { color: var(--accent-hover); }
   .disclosure-caret, .disclosure-panel, .disclosure-trigger { transition: none; }
   .modal-backdrop, .modal { animation: none; }
 }
+
+/* Same effects as the OS-level query above, gated by the manual "pause animations" toggle
+   (MotionToggle.tsx) instead — an in-page override per WCAG 2.2.2, since prefers-reduced-motion
+   alone is a system setting, not a control the page itself offers. Kept as separate rules rather
+   than folded into one selector list so the OS-level guarantee above still holds even if the
+   attribute's init script fails for any reason. */
+:root[data-motion="reduced"] #cursor-glow { transition: none; }
+:root[data-motion="reduced"] .card, :root[data-motion="reduced"] .card::before { transition: none; }
+:root[data-motion="reduced"] .card:hover, :root[data-motion="reduced"] .card:focus-within { transform: none; }
+:root[data-motion="reduced"] .caret { animation: none; }
+:root[data-motion="reduced"] .term-pop, :root[data-motion="reduced"] .term-trigger { transition: none; }
+:root[data-motion="reduced"] .disclosure-caret, :root[data-motion="reduced"] .disclosure-panel, :root[data-motion="reduced"] .disclosure-trigger { transition: none; }
+:root[data-motion="reduced"] .modal-backdrop, :root[data-motion="reduced"] .modal { animation: none; }
 
 /* ---- Glossary terms: dotted underline, definition popover stemming from the word ---- */
 .term { position: relative; display: inline; }
@@ -459,3 +612,77 @@ footer a:hover { color: var(--accent-hover); }
 .term-hint { display: block; margin-top: 0.3rem; font-family: var(--font-mono); font-size: 0.68rem; color: var(--text-muted); }
 @keyframes modal-fade { from { opacity: 0; } }
 @keyframes modal-rise { from { opacity: 0; transform: translateY(10px) scale(0.97); } }
+
+/* ---- Garden: informal, periodically-updated log — separate route, single scrolling column ---- */
+.garden-page { max-width: 640px; margin: 0 auto; padding: 4.5rem 1.5rem 6rem; }
+.garden-back {
+  display: inline-block;
+  margin-bottom: 3rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.garden-back:hover, .garden-back:focus-visible { color: var(--accent-hover); }
+
+.pixel-garden { display: block; width: 100%; max-width: 260px; height: auto; margin: 0 0 1rem; }
+
+.garden-header { margin-bottom: 3.5rem; }
+.garden-header h1 { font-size: 1.9rem; margin: 0.5rem 0 1rem; }
+.garden-intro { margin: 0; max-width: 56ch; color: var(--text-muted); }
+
+.garden-page section { max-width: 640px; }
+.garden-page section + section { margin-top: 3.5rem; }
+.garden-page .label { margin-bottom: 1.1rem; }
+
+.garden-empty { margin: 0; font-size: 0.88rem; font-style: italic; color: var(--text-muted); }
+
+.garden-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.35rem; }
+.garden-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.75rem 0.9rem;
+  margin: 0 -0.9rem;
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.2s ease;
+}
+.garden-row:hover, .garden-row:focus-visible { background: color-mix(in oklch, var(--accent) 10%, transparent); }
+.garden-row-top { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+.garden-title { font-family: var(--font-display); font-weight: 600; font-size: 0.98rem; color: var(--text-strong); }
+.garden-type {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.garden-note { font-size: 0.85rem; color: var(--text-muted); }
+
+/* Now playing: a single liquid-glass .card (same hover/glow treatment as the homepage project
+   cards), manually updated in Notion rather than polled from an API. */
+.now-playing-card { display: flex; flex-wrap: wrap; align-items: center; gap: 1.1rem; }
+.now-playing-art { width: 56px; height: 56px; border-radius: 6px; object-fit: cover; flex-shrink: 0; }
+.now-playing-art-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in oklch, var(--text-muted) 16%, transparent);
+  color: var(--text-muted);
+}
+.now-playing-art-placeholder svg { width: 22px; height: 22px; }
+.now-playing-info { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; flex: 1 1 auto; }
+.now-playing-title, .now-playing-artist { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.now-playing-title { font-family: var(--font-display); font-weight: 600; font-size: 1rem; color: var(--text-strong); }
+.now-playing-artist { font-size: 0.85rem; color: var(--text-muted); }
+.now-playing-time { flex-shrink: 0; }
+.now-playing-link { flex-basis: 100%; margin-top: 0.2rem; }
+
+@media (max-width: 480px) {
+  .garden-page { padding: 3.5rem 1.25rem 4rem; }
+  .garden-header h1 { font-size: 1.5rem; }
+}

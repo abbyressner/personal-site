@@ -33,20 +33,12 @@ const DarkModeToggle = () => {
 
   return (
     <button
+      type="button"
       onClick={toggleDarkMode}
-      aria-label="Toggle Dark Mode"
-      style={{
-        display: "inline-flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "0.4rem",
-        borderRadius: "999px",
-        color: "var(--text-muted)",
-        background: "transparent",
-        border: "1px solid var(--hairline)",
-        cursor: "pointer",
-        transition: "color 0.2s ease, background 0.2s ease",
-      }}
+      className="icon-toggle"
+      aria-pressed={!darkMode}
+      aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+      title={darkMode ? "Switch to light mode" : "Switch to dark mode"}
     >
       {darkMode ? (
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24">

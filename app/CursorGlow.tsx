@@ -13,7 +13,9 @@ export default function CursorGlow() {
     const glow = glowRef.current;
     if (!glow) return;
 
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    // data-motion already merges the OS preference with the manual "pause animations" toggle
+    // (set before paint by MOTION_INIT_SCRIPT in layout.tsx) — see TypedIntro.tsx for the same check.
+    const reduceMotion = document.documentElement.getAttribute("data-motion") === "reduced";
     const isCoarse = window.matchMedia("(pointer: coarse)").matches;
     if (isCoarse) return;
 
