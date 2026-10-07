@@ -45,17 +45,6 @@
   50%, 100% { opacity: 0; }
 }
 
-/* Pixel-garden accent palette — the one deliberate departure from the single-indigo-accent rule,
-   confined to the hand-built pixel-art illustration on /garden. Same lightness/chroma register in
-   both themes since it's a small decorative graphic, not text. */
-:root {
-  --pixel-purple: oklch(65% 0.18 300);
-  --pixel-pink: oklch(75% 0.15 350);
-  --pixel-green: oklch(70% 0.16 145);
-  --pixel-orange: oklch(75% 0.15 55);
-  --pixel-yellow: oklch(80% 0.16 95);
-}
-
 :root[data-theme="light"] {
   --page: oklch(96% 0.01 265);
   --text-strong: oklch(20% 0.02 265);
@@ -626,11 +615,17 @@ footer a:hover { color: var(--accent-hover); }
 }
 .garden-back:hover, .garden-back:focus-visible { color: var(--accent-hover); }
 
-.pixel-garden { display: block; width: 100%; max-width: 260px; height: auto; margin: 0 0 1rem; }
+.pixel-garden {
+  /* Same width as the text column; the art scales to fit. Its palette — the one deliberate
+     departure from the single-indigo accent — lives in garden/pixelGardenEngine.js, confined to
+     this illustration. */
+  margin: 0 0 1.25rem;
+}
+.pixel-garden canvas { display: block; width: 100%; height: auto; aspect-ratio: 300 / 80; image-rendering: pixelated; touch-action: pan-y; }
 
 .garden-header { margin-bottom: 3.5rem; }
 .garden-header h1 { font-size: 1.9rem; margin: 0.5rem 0 1rem; }
-.garden-intro { margin: 0; max-width: 56ch; color: var(--text-muted); }
+.garden-header h1.garden-title-pixel { font-weight: 500; letter-spacing: 0.01em; margin-bottom: 0; }
 
 .garden-page section { max-width: 640px; }
 .garden-page section + section { margin-top: 3.5rem; }

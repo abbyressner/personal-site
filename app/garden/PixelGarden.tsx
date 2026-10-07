@@ -1,84 +1,88 @@
-// A little hand-built pixel-art flower bed for the garden page header. Purely decorative
-// (aria-hidden) — every "pixel" is a 1x1 SVG rect on a fixed grid, colored via the
-// --pixel-* tokens in globals.css. Not photographic, not a library icon: just five flowers
-// and a few grass tufts, deliberately not-too-detailed.
+"use client";
+import { useEffect, useRef } from "react";
+import { mount } from "./pixelGardenEngine";
 
-const FLOWER_PIXELS: { dx: number; dy: number; part: "bloom" | "stem" }[] = [
-  { dx: 1, dy: 0, part: "bloom" },
-  { dx: 3, dy: 0, part: "bloom" },
-  { dx: 0, dy: 1, part: "bloom" },
-  { dx: 1, dy: 1, part: "bloom" },
-  { dx: 2, dy: 1, part: "bloom" },
-  { dx: 3, dy: 1, part: "bloom" },
-  { dx: 4, dy: 1, part: "bloom" },
-  { dx: 1, dy: 2, part: "bloom" },
-  { dx: 2, dy: 2, part: "bloom" },
-  { dx: 3, dy: 2, part: "bloom" },
-  { dx: 2, dy: 3, part: "stem" },
-  { dx: 1, dy: 4, part: "stem" },
-  { dx: 2, dy: 4, part: "stem" },
-  { dx: 3, dy: 4, part: "stem" },
-  { dx: 2, dy: 5, part: "stem" },
-  { dx: 2, dy: 6, part: "stem" },
-];
+// The animated pixel-art header for /garden: a Japanese cherry tree with a cardinal perched on a bush,
+// bushes and scattered flower clusters, swaying grass and butterflies that land on flowers.
+// Clicking a flower, bush or the tree waters it; clicking the cardinal makes it chirp. All drawing
+// lives in pixelGardenEngine.js (a fixed 300×80 art-pixel scene; CSS scales it to the column
+// width); this component only mounts it and wires the "Pause animations" setting (data-motion on
+// <html>, see AccessibilityMenu.tsx).
 
-const TUFT_PIXELS: { dx: number; dy: number }[] = [
-  { dx: 0, dy: 0 },
-  { dx: 0, dy: 1 },
-  { dx: 1, dy: 1 },
-];
+const SCENE = {
+  width: 1200,
+  height: 320,
+  pixel: 4,
+  seed: 23,
+  groundRows: 3,
+  grassMax: 7,
+  grassBack: 1.3,
+  grassFront: 1.1,
+  daisies: 8,
+  twinkle: false,
+  gusts: false,
+  smallFlowers: true,
+  cardinal: "bush",
+  butterflies: 4,
+  bfPalettes: [1, 0],
+  tree: { style: "bonsai", seed: 8, right: 1, top: 3, maxW: 180 },
+  plants: [
+    { k: "bush", x: 0.03, w: 24, h: 12, blooms: 3, back: true },
+    { k: "bush", x: 0.075, w: 16, h: 9, blooms: 2 },
+    { k: "cosmos", x: 0.12, h: 13, R: 3, pal: "pink" },
+    { k: "cosmos", x: 0.135, h: 10, R: 2, pal: "blush" },
+    { k: "daisy", x: 0.15, h: 7, R: 2 },
+    { k: "bluebell", x: 0.22, h: 14, dir: 1, bells: 4, aw: 5 },
+    { k: "daisy", x: 0.245, h: 6, R: 2 },
+    { k: "bush", x: 0.3, w: 20, h: 11, blooms: 2, back: true },
+    { k: "bush", x: 0.335, w: 14, h: 8, blooms: 2 },
+    { k: "tulip", x: 0.38, h: 10, pal: "rose" },
+    { k: "tulip", x: 0.395, h: 8, pal: "coral" },
+    { k: "sprig", x: 0.415, h: 13, R: 2 },
+    { k: "daffodil", x: 0.48, h: 14, R: 3, dir: -1 },
+    { k: "daffodil", x: 0.5, h: 11, R: 3, dir: 1 },
+    { k: "bush", x: 0.575, w: 28, h: 13, blooms: 4, back: true },
+    { k: "bush", x: 0.545, w: 12, h: 7, blooms: 1 },
+    { k: "bush", x: 0.605, w: 18, h: 10, blooms: 3 },
+    { k: "cosmos", x: 0.655, h: 12, R: 3, pal: "rose" },
+    { k: "daisy", x: 0.672, h: 8, R: 2 },
+    { k: "bluebell", x: 0.73, h: 12, dir: -1, bells: 4, aw: 5 },
+    { k: "daisy", x: 0.79, h: 6, R: 2 },
+    { k: "bush", x: 0.865, w: 22, h: 11, blooms: 2, back: true },
+    { k: "bush", x: 0.9, w: 14, h: 8, blooms: 2 },
+    { k: "tulip", x: 0.955, h: 9, pal: "pink" },
+  ],
+};
 
-const FLOWERS: { x: number; y: number; color: string }[] = [
-  { x: 0, y: 1, color: "var(--pixel-purple)" },
-  { x: 8, y: 0, color: "var(--pixel-pink)" },
-  { x: 16, y: 2, color: "var(--pixel-green)" },
-  { x: 24, y: 0, color: "var(--pixel-orange)" },
-  { x: 32, y: 1, color: "var(--pixel-yellow)" },
-];
-
-const TUFTS: { x: number; y: number }[] = [
-  { x: 6, y: 7 },
-  { x: 22, y: 8 },
-  { x: 39, y: 6 },
-];
+function motionPaused() {
+  return document.documentElement.getAttribute("data-motion") === "reduced";
+}
 
 export default function PixelGarden() {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const garden = mount(canvas, { ...SCENE, paused: motionPaused() });
+
+    const motion = new MutationObserver(() => garden.set({ paused: motionPaused() }));
+    motion.observe(document.documentElement, { attributes: true, attributeFilter: ["data-motion"] });
+
+    return () => {
+      motion.disconnect();
+      garden.destroy();
+    };
+  }, []);
+
   return (
-    <svg
-      className="pixel-garden"
-      viewBox="0 0 42 9"
-      shapeRendering="crispEdges"
-      aria-hidden="true"
-      focusable="false"
-    >
-      {FLOWERS.map((flower, i) => (
-        <g key={i}>
-          {FLOWER_PIXELS.map((p, j) => (
-            <rect
-              key={j}
-              x={flower.x + p.dx}
-              y={flower.y + p.dy}
-              width={1}
-              height={1}
-              fill={p.part === "bloom" ? flower.color : "var(--pixel-green)"}
-            />
-          ))}
-        </g>
-      ))}
-      {TUFTS.map((tuft, i) => (
-        <g key={`tuft-${i}`}>
-          {TUFT_PIXELS.map((p, j) => (
-            <rect
-              key={j}
-              x={tuft.x + p.dx}
-              y={tuft.y + p.dy}
-              width={1}
-              height={1}
-              fill="var(--pixel-green)"
-            />
-          ))}
-        </g>
-      ))}
-    </svg>
+    <div className="pixel-garden">
+      <canvas
+        ref={canvasRef}
+        role="img"
+        aria-label="Pixel-art garden: a pink Japanese cherry tree with a red cardinal perched on a bush, bushes and small clusters of flowers, with butterflies drifting between them"
+      />
+    </div>
   );
 }

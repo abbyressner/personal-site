@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Pixelify_Sans } from "next/font/google";
 import CursorGlow from "../CursorGlow";
 import PixelGarden from "./PixelGarden";
 import { getGardenEntries, groupBySection, type GardenEntry } from "../../lib/notion";
 import { getNowPlaying, type NowPlaying } from "../../lib/nowPlaying";
+
+// Pixel display face for the page title only — matches the pixel-art header above it.
+const pixelFont = Pixelify_Sans({ subsets: ["latin"], weight: ["500"], display: "swap" });
 
 export const metadata: Metadata = {
   title: "Garden — Abigail Ressner",
@@ -72,13 +76,7 @@ export default async function GardenPage() {
 
       <header className="garden-header">
         <PixelGarden />
-        <p className="label">Digital garden</p>
-        <h1>What I&apos;m into right now</h1>
-        <p className="garden-intro">
-          A running, informal log — things I&apos;m reading and watching, tools I keep coming back
-          to, and what&apos;s in my headphones. Updated straight from my own notes, not curated for
-          appearances.
-        </p>
+        <h1 className={`garden-title-pixel ${pixelFont.className}`}>abby&apos;s digital garden</h1>
       </header>
 
       <section aria-labelledby="interested-heading">
