@@ -71,9 +71,6 @@ export default function Home() {
               <a href="https://github.com/abbyressner" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2-.2 4.5-1 4.5-4.5a3.5 3.5 0 0 0-1-2.5c.1-.2.4-1.2-.1-2.5 0 0-.8-.3-2.8 1a9.6 9.6 0 0 0-5 0C7.8 5.7 7 6 7 6c-.5 1.3-.2 2.3-.1 2.5A3.5 3.5 0 0 0 6 11c0 3.4 2.5 4.3 4.5 4.5-.3.3-.5.8-.5 1.5V21"/></svg>
               </a>
-              <a href="https://codepen.io/abbyressner" target="_blank" rel="noopener noreferrer" aria-label="CodePen">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="m12 2 10 6.5v7L12 22 2 15.5v-7L12 2Z"/><path d="M2 8.5 12 15l10-6.5M12 22v-7M2 15.5 12 9l10 6.5"/></svg>
-              </a>
             </div>
           </div>
         </aside>
