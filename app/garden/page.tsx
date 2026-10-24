@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Pixelify_Sans } from "next/font/google";
 import CursorGlow from "../CursorGlow";
+import TechIcons from "../TechIcons";
 import PixelGarden from "./PixelGarden";
 import { getGardenEntries, groupBySection, type GardenEntry } from "../../lib/notion";
 import { getNowPlaying, type NowPlaying } from "../../lib/nowPlaying";
@@ -121,6 +122,18 @@ export default async function GardenPage() {
             ) : null}
           </article>
         )}
+      </section>
+
+      <section aria-labelledby="archive-heading">
+        <h2 className="label" id="archive-heading">Archive</h2>
+        <article className="card" tabIndex={0}>
+          <div className="card-top">
+            <h3>Pong</h3>
+            <TechIcons techs={["Processing", "TypeScript"]} />
+          </div>
+          <p>A one-player Pong game I first wrote in Processing in high school, ported to the web with its original bugs fixed. Playable right here on the site.</p>
+          <Link className="card-link" href="/pong">Play it →</Link>
+        </article>
       </section>
     </main>
   );

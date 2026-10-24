@@ -3,6 +3,7 @@ import CursorGlow from "./CursorGlow";
 import Disclosure from "./Disclosure";
 import ScrollForward from "./ScrollForward";
 import Term from "./Term";
+import TechIcons from "./TechIcons";
 import TypedIntro from "./TypedIntro";
 
 const t1dExplainer = (
@@ -70,9 +71,6 @@ export default function Home() {
               <a href="https://github.com/abbyressner" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2-.2 4.5-1 4.5-4.5a3.5 3.5 0 0 0-1-2.5c.1-.2.4-1.2-.1-2.5 0 0-.8-.3-2.8 1a9.6 9.6 0 0 0-5 0C7.8 5.7 7 6 7 6c-.5 1.3-.2 2.3-.1 2.5A3.5 3.5 0 0 0 6 11c0 3.4 2.5 4.3 4.5 4.5-.3.3-.5.8-.5 1.5V21"/></svg>
               </a>
-              <a href="https://codepen.io/abbyressner" target="_blank" rel="noopener noreferrer" aria-label="CodePen">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="m12 2 10 6.5v7L12 22 2 15.5v-7L12 2Z"/><path d="M2 8.5 12 15l10-6.5M12 22v-7M2 15.5 12 9l10 6.5"/></svg>
-              </a>
             </div>
           </div>
         </aside>
@@ -119,7 +117,7 @@ export default function Home() {
               <article className="card" tabIndex={0}>
                 <div className="card-top">
                   <h3>refillr</h3>
-                  <span className="meta">iOS · Swift · in development</span>
+                  <TechIcons techs={["Swift", "iOS"]} />
                 </div>
                 <p>An iOS app for tracking, managing, and refilling medications and supplements, with a customizable interface backed by the NIH&apos;s dietary supplement label and prescription drug databases.</p>
                 <a className="card-link" href="https://github.com/abbyressner/refillr" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
@@ -127,18 +125,10 @@ export default function Home() {
               <article className="card" tabIndex={0}>
                 <div className="card-top">
                   <h3>Non-Human Vision</h3>
-                  <span className="meta">Unity · C#</span>
+                  <TechIcons techs={["Unity", "Meta Quest"]} />
                 </div>
                 <p>A VR experience for Meta Quest&nbsp;3 that simulates how animals and insects perceive their surroundings, inspired by the toBeeView research project and built by a five-person agile team in Software Design &amp; Development.</p>
                 <a className="card-link" href="https://github.com/abbyressner/csc324-group-project" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
-              </article>
-              <article className="card" tabIndex={0}>
-                <div className="card-top">
-                  <h3>Pong</h3>
-                  <span className="meta">TypeScript · Canvas</span>
-                </div>
-                <p>A one-player Pong game I first wrote in Processing in high school, ported to the web with its original bugs fixed. Playable right here on the site.</p>
-                <Link className="card-link" href="/pong">Play it →</Link>
               </article>
             </div>
           </section>
