@@ -681,3 +681,20 @@ footer a:hover { color: var(--accent-hover); }
   .garden-page { padding: 3.5rem 1.25rem 4rem; }
   .garden-header h1 { font-size: 1.5rem; }
 }
+
+/* ---- Pong: playable port of the high school Processing project — separate route ---- */
+.pong-page { max-width: 880px; margin: 0 auto; padding: 4.5rem 1.5rem 6rem; }
+.pong-header { margin-bottom: 2rem; }
+.pong-header h1 { font-size: 1.9rem; margin: 0.5rem 0 0.75rem; }
+.pong-header p { margin: 0; color: var(--text-muted); }
+.pong-header kbd {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 0.05rem 0.4rem;
+  border: 1px solid color-mix(in oklch, var(--text-strong) 25%, transparent);
+  border-radius: 4px;
+}
+.pong-board { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; border-radius: 10px; touch-action: none; }
+.pong-note { margin: 1.25rem 0 0; font-size: 0.88rem; color: var(--text-muted); }
+.pong-note a { color: var(--accent); text-decoration: none; }
+.pong-note a:hover, .pong-note a:focus-visible { color: var(--accent-hover); text-decoration: underline; }

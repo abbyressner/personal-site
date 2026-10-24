@@ -132,6 +132,14 @@ export default function Home() {
                 <p>A VR experience for Meta Quest&nbsp;3 that simulates how animals and insects perceive their surroundings, inspired by the toBeeView research project and built by a five-person agile team in Software Design &amp; Development.</p>
                 <a className="card-link" href="https://github.com/abbyressner/csc324-group-project" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
               </article>
+              <article className="card" tabIndex={0}>
+                <div className="card-top">
+                  <h3>Pong</h3>
+                  <span className="meta">TypeScript · Canvas</span>
+                </div>
+                <p>A one-player Pong game I first wrote in Processing in high school, ported to the web with its original bugs fixed. Playable right here on the site.</p>
+                <Link className="card-link" href="/pong">Play it →</Link>
+              </article>
             </div>
           </section>
 
