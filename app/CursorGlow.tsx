@@ -4,7 +4,8 @@ import { useEffect, useRef } from "react";
 /**
  * Ports the mockup-C cursor-glow: a soft trailing viewport light (eased lag) plus a
  * cursor-tracked radial highlight on each .card, layered under the liquid-glass hover.
- * Disabled for touch pointers and prefers-reduced-motion, matching the mockup.
+ * Doesn't track touch pointers; on phones and touch screens globals.css parks it, unmoving, in the
+ * top-left corner instead.
  */
 export default function CursorGlow() {
   const glowRef = useRef<HTMLDivElement>(null);

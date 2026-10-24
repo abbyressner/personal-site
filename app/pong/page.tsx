@@ -11,7 +11,7 @@ export default function PongPage() {
   return (
     <main className="pong-page">
       <CursorGlow />
-      <Link className="garden-back" href="/">← Abigail Ressner</Link>
+      <Link className="garden-back" href="/garden">← Garden</Link>
 
       <header className="pong-header">
         <h1>Pong</h1>

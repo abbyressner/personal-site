@@ -3,6 +3,7 @@ import CursorGlow from "./CursorGlow";
 import Disclosure from "./Disclosure";
 import ScrollForward from "./ScrollForward";
 import Term from "./Term";
+import TechIcons from "./TechIcons";
 import TypedIntro from "./TypedIntro";
 
 const t1dExplainer = (
@@ -119,7 +120,7 @@ export default function Home() {
               <article className="card" tabIndex={0}>
                 <div className="card-top">
                   <h3>refillr</h3>
-                  <span className="meta">iOS · Swift · in development</span>
+                  <TechIcons techs={["Swift", "iOS"]} />
                 </div>
                 <p>An iOS app for tracking, managing, and refilling medications and supplements, with a customizable interface backed by the NIH&apos;s dietary supplement label and prescription drug databases.</p>
                 <a className="card-link" href="https://github.com/abbyressner/refillr" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
@@ -127,18 +128,10 @@ export default function Home() {
               <article className="card" tabIndex={0}>
                 <div className="card-top">
                   <h3>Non-Human Vision</h3>
-                  <span className="meta">Unity · C#</span>
+                  <TechIcons techs={["Unity", "Meta Quest"]} />
                 </div>
                 <p>A VR experience for Meta Quest&nbsp;3 that simulates how animals and insects perceive their surroundings, inspired by the toBeeView research project and built by a five-person agile team in Software Design &amp; Development.</p>
                 <a className="card-link" href="https://github.com/abbyressner/csc324-group-project" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
-              </article>
-              <article className="card" tabIndex={0}>
-                <div className="card-top">
-                  <h3>Pong</h3>
-                  <span className="meta">TypeScript · Canvas</span>
-                </div>
-                <p>A one-player Pong game I first wrote in Processing in high school, ported to the web with its original bugs fixed. Playable right here on the site.</p>
-                <Link className="card-link" href="/pong">Play it →</Link>
               </article>
             </div>
           </section>

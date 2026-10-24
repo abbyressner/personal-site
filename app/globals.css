@@ -100,6 +100,10 @@ a { color: inherit; }
   height: 100vh;
   max-width: 1400px;
   margin: 0 auto;
+  /* Hidden .term-pop tooltips still take up layout space; without this, one near the right edge
+     widened the page on phones and pushed the fixed a11y toolbar off-screen. clip (not hidden)
+     makes no scroll container and leaves vertical overflow alone. */
+  overflow-x: clip;
 }
 
 .rail {
@@ -257,7 +261,9 @@ a { color: inherit; }
 }
 .card:hover::before, .card:focus-within::before { opacity: 1; }
 
-.card-top { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 0.6rem; }
+.card-top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 0.6rem; }
+.tech-icons { list-style: none; margin: 0; padding: 0; display: flex; gap: 0.65rem; flex-shrink: 0; color: var(--accent); }
+.tech-icons svg { display: block; width: 16px; height: 16px; fill: currentColor; }
 .card h3 { font-size: 1.05rem; }
 .card p { margin: 0; color: var(--text-muted); font-size: 0.92rem; }
 .card a.card-link {
@@ -427,14 +433,32 @@ footer a:hover { color: var(--accent-hover); }
   background: radial-gradient(circle, color-mix(in oklch, var(--accent-hover) 12%, transparent) 0%, transparent 62%);
 }
 
+/* Single column: the rail becomes a full header at the top of the page (intro, typed line, nav,
+   socials) instead of a fixed sidebar. It scrolls away with the page rather than sticking, since
+   all of that stacked would take a quarter of a phone screen. */
 @media (max-width: 860px) {
   .shell { grid-template-columns: 1fr; height: auto; }
-  .rail { height: auto; border-right: none; border-bottom: 1px solid var(--hairline); position: sticky; top: 0; background: var(--page); z-index: 2; padding: 1.5rem 1.5rem; }
-  .rail-top { flex-direction: row; align-items: center; justify-content: space-between; gap: 1rem; }
-  .hero-intro > div, .nav-list { display: none; }
-  .rail-bottom { flex-direction: row; align-items: center; }
+  .rail { height: auto; border-right: none; border-bottom: 1px solid var(--hairline); padding: 2.5rem 1.5rem 0.5rem; gap: 1.5rem; }
+  .rail-top { gap: 1.5rem; padding-right: 2.5rem; /* clears the fixed a11y toolbar */ }
+  .hero-intro > div { min-height: 2.4em; /* room for a descriptor that wraps, so nothing below jumps */ }
+  .nav-list { flex-direction: row; flex-wrap: wrap; gap: 0.5rem 1.25rem; }
+  .nav-list a::before, .nav-list a:hover::before, .nav-list a:focus-visible::before { display: none; }
   .content { height: auto; overflow-y: visible; padding: 2.5rem 1.5rem 4rem; }
-  #cursor-glow { display: none; }
+}
+
+/* No cursor to follow on phones and touch screens: the glow sits still in the top-left corner,
+   at the same size. !important overrides the inline transform CursorGlow sets on mouse moves. */
+@media (max-width: 860px), (hover: none) and (pointer: coarse) {
+  /* Same gradient as the cursor glow (880px box -> farthest-corner radius 440px * sqrt 2 = 622px),
+     centered on the corner but drawn inside a viewport-sized box so it can't widen the page. */
+  #cursor-glow {
+    inset: 0; width: auto; height: auto; margin: 0; border-radius: 0;
+    opacity: 1 !important; transform: none !important; transition: none;
+    background: radial-gradient(circle 622px at 0 0, color-mix(in oklch, var(--accent) 12%, transparent) 0%, transparent 62%);
+  }
+  :root[data-theme="light"] #cursor-glow {
+    background: radial-gradient(circle 622px at 0 0, color-mix(in oklch, var(--accent-hover) 12%, transparent) 0%, transparent 62%);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
