@@ -29,32 +29,32 @@ const SETTINGS: {
     attr: "data-motion",
     onValue: "reduced",
     storageKey: "motion",
-    label: "Pause animations",
-    description: "Stops the typed intro and other motion.",
+    label: "pause animations",
+    description: "stops the typed intro and other motion.",
   },
   {
     key: "font",
     attr: "data-font",
     onValue: "dyslexic",
     storageKey: "font",
-    label: "Dyslexia-friendly font",
-    description: "Switches body text to OpenDyslexic.",
+    label: "dyslexia-friendly font",
+    description: "switches body text to OpenDyslexic.",
   },
   {
     key: "textSize",
     attr: "data-text-size",
     onValue: "large",
     storageKey: "text-size",
-    label: "Larger text",
-    description: "Bigger text and more spacing site-wide.",
+    label: "larger text",
+    description: "bigger text and more spacing site-wide.",
   },
   {
     key: "contrast",
     attr: "data-contrast",
     onValue: "high",
     storageKey: "contrast",
-    label: "High contrast",
-    description: "Stronger text, visible borders, underlined links.",
+    label: "high contrast",
+    description: "stronger text, visible borders, underlined links.",
   },
 ];
 
@@ -121,8 +121,8 @@ export default function AccessibilityMenu() {
         className="icon-toggle"
         aria-expanded={open}
         aria-controls={panelId}
-        aria-label="Accessibility settings"
-        title="Accessibility settings"
+        aria-label="accessibility settings"
+        title="accessibility settings"
         onClick={() => setOpen((o) => !o)}
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
@@ -135,8 +135,8 @@ export default function AccessibilityMenu() {
         </svg>
       </button>
       {open && (
-        <div id={panelId} className="a11y-panel" role="group" aria-label="Accessibility settings">
-          <p className="a11y-panel-title">Accessibility</p>
+        <div id={panelId} className="a11y-panel" role="group" aria-label="accessibility settings">
+          <p className="a11y-panel-title">accessibility</p>
           {SETTINGS.map((setting, i) => (
             <button
               key={setting.key}
