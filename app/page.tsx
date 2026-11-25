@@ -135,7 +135,7 @@ export default function Home() {
 
           <footer id="contact">
             <p>say hello at <a href="mailto:contact@abbyressner.com" aria-label="email contact at abbyressner dot com">contact [at] abbyressner [dot] com</a></p>
-            <p>© 2026 Abigail Ressner</p>
+            <p>© 2026 abigail ressner</p>
           </footer>
         </main>
       </div>

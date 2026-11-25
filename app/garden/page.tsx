@@ -11,7 +11,7 @@ import { getNowPlaying, type NowPlaying } from "../../lib/nowPlaying";
 const pixelFont = Pixelify_Sans({ subsets: ["latin"], weight: ["500"], display: "swap" });
 
 export const metadata: Metadata = {
-  title: "garden — Abigail Ressner",
+  title: "garden — abigail ressner",
 };
 
 // Periodically-updated, not real-time — see lib/notion.ts and lib/nowPlaying.ts revalidate windows.
@@ -73,7 +73,7 @@ export default async function GardenPage() {
   return (
     <main className="garden-page">
       <CursorGlow />
-      <Link className="garden-back" href="/">← Abigail Ressner</Link>
+      <Link className="garden-back" href="/">← abigail ressner</Link>
 
       <header className="garden-header">
         <PixelGarden />

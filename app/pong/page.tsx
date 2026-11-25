@@ -4,7 +4,7 @@ import CursorGlow from "../CursorGlow";
 import Pong from "./Pong";
 
 export const metadata: Metadata = {
-  title: "Pong — Abigail Ressner",
+  title: "Pong — abigail ressner",
 };
 
 export default function PongPage() {
