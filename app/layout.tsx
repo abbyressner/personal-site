@@ -36,7 +36,7 @@ const openDyslexic = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "abigail ressner",
+  title: "Abigail Ressner",
 };
 
 // Sets data-theme before paint so the initial render matches the stored/system preference —

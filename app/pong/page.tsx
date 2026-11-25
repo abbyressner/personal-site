@@ -4,7 +4,7 @@ import CursorGlow from "../CursorGlow";
 import Pong from "./Pong";
 
 export const metadata: Metadata = {
-  title: "pong — abigail ressner",
+  title: "Pong — Abigail Ressner",
 };
 
 export default function PongPage() {
@@ -14,7 +14,7 @@ export default function PongPage() {
       <Link className="garden-back" href="/garden">← garden</Link>
 
       <header className="pong-header">
-        <h1>pong</h1>
+        <h1>Pong</h1>
         <p>
           you&apos;re the paddle on the right. use <kbd>↑</kbd> <kbd>↓</kbd> or <kbd>W</kbd> <kbd>S</kbd>, or
           move your mouse or finger over the board.
@@ -24,7 +24,7 @@ export default function PongPage() {
       <Pong />
 
       <p className="pong-note">
-        originally written in processing (java) for a high school CS class.{" "}
+        originally written in Processing (Java) for a high school CS class.{" "}
         <a href="https://github.com/abbyressner/pong" target="_blank" rel="noopener noreferrer">view the source →</a>
       </p>
     </main>

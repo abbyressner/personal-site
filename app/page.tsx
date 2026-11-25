@@ -20,17 +20,17 @@ const heroDescriptors = [
   "engineer",
   "synesthete",
   "socialized medicine admirer",
-  "apple shortcuts enthusiast",
+  "Apple Shortcuts enthusiast",
   "detail-oriented developer",
   "open-source contributor",
   "imposter syndrome's worst nightmare",
   "sudoku addict",
-  "st. louisan",
-  "duolingo chess student",
+  "St. Louisan",
+  "Duolingo chess student",
   "life-long learner",
   "pharmacy benefit manager hater",
-  "BMad method fan",
-  "dracula theme user",
+  "BMad Method fan",
+  "Dracula theme user",
 ];
 
 // These already read as a complete predicate on their own — no "a"/"an" gets typed before them.
@@ -78,7 +78,7 @@ export default function Home() {
         <main className="content">
           <section id="about" className="about">
             <h2 className="label">about</h2>
-            <p>i&apos;m a senior at <strong>grinnell college</strong> studying computer science with a concentration in statistics (graduating may&nbsp;2027), and i&apos;m looking for a new-grad software or data engineering role in health tech, medical devices, or healthcare more broadly.</p>
+            <p>i&apos;m a senior at <strong>Grinnell College</strong> studying computer science with a concentration in statistics (graduating May&nbsp;2027), and i&apos;m looking for a new-grad software or data engineering role in health tech, medical devices, or healthcare more broadly.</p>
             <Disclosure label="why healthcare?">
               <p>my mom has lived with <Term
                 def="an autoimmune condition where the body stops making insulin entirely. not caused by diet or lifestyle, and not the same disease as type 2."
@@ -86,27 +86,27 @@ export default function Home() {
               >type&nbsp;1 diabetes</Term> for most of her life, and growing up i watched how directly her health depended on a stack of devices actually working. the insulin pump, whose algorithm re-evaluates every five minutes and adjusts her basal rate and delivers correction boluses to hold a target glucose, and which, depending on the generation of the system, either kept her steady over the long term or didn&apos;t. the continuous glucose monitor, whose accuracy still varies meaningfully between brands, and within a single sensor between its first day and its last. the new infusion set every few days, the new sensor about every week, and the two-hour warm-up before a fresh one will report anything. the pairing between devices that may or may not work out of the box. even ordering supplies, through a website that adds friction to something she has no choice but to do.</p>
               <p>seeing all of that up close, and watching which parts improved over the years and which stagnated, gave me a close-up view of what still needs to be built in healthcare technology. it&apos;s the reason i built <a href="#projects">refillr</a>, an iOS app for tracking and refilling medications, and the reason i want to keep working on this: better interfaces, better data infrastructure, tools that ease the burden of managing a chronic condition around the clock.</p>
             </Disclosure>
-            <p>this past summer i was a data engineering intern at <strong>eli lilly and company</strong>, on the consumer data engineering team within business insights &amp; analytics, working on how a global team builds <Term def="A dataset built and maintained like a software product: owned, documented, versioned, and reliable enough for other teams to build on.">data products</Term> with <Term def="AI systems that plan and carry out multi-step tasks on their own, calling tools and making decisions along the way, rather than answering a single prompt.">AI agents</Term> in a regulated environment.</p>
-            <p>outside of classes, i&apos;m on the leadership team of <strong>girls who code</strong> at grinnell; we run a weekly after-school club at the local middle school covering programming fundamentals and robotics, and mostly getting girls excited about computer science.</p>
-            <p>i&apos;m available starting june&nbsp;2027.</p>
+            <p>this past summer i was a data engineering intern at <strong>Eli Lilly and Company</strong>, on the Consumer Data Engineering team within Business Insights &amp; Analytics, working on how a global team builds <Term def="A dataset built and maintained like a software product: owned, documented, versioned, and reliable enough for other teams to build on.">data products</Term> with <Term def="AI systems that plan and carry out multi-step tasks on their own, calling tools and making decisions along the way, rather than answering a single prompt.">AI agents</Term> in a regulated environment.</p>
+            <p>outside of classes, i&apos;m on the leadership team of <strong>Girls Who Code</strong> at Grinnell; we run a weekly after-school club at the local middle school covering programming fundamentals and robotics, and mostly getting girls excited about computer science.</p>
+            <p>i&apos;m available starting June&nbsp;2027.</p>
           </section>
 
           <section id="experience">
             <h2 className="label">experience</h2>
             <article className="role">
               <div className="role-top">
-                <h3>eli lilly and company</h3>
+                <h3>Eli Lilly and Company</h3>
                 <span className="meta">summer 2026</span>
               </div>
-              <p className="role-title">data engineering intern · consumer data engineering, business insights &amp; analytics</p>
+              <p className="role-title">Data Engineering Intern · Consumer Data Engineering, Business Insights &amp; Analytics</p>
               <ul className="role-points">
-                <li><b>defined AI-assisted development standards</b> for BI&amp;A&apos;s agentic data product initiative: standards that hold up in a regulated, <Term def="protected health information: any health data that can be tied to a person. regulated under HIPAA in the US, so systems that touch it have strict rules about access, handling, and audit.">PHI</Term>-sensitive environment, with <Term def="writing a precise, reviewable specification of what a system should do before any code is written, then building (and having AI build) against that spec rather than against a conversation.">spec-driven development</Term> at the core.</li>
-                <li>evaluated spec-driven development frameworks (superpowers, GitHub spec kit, and the <Term def="an open-source framework for AI-assisted software development. it gives AI agents defined roles (analyst, architect, developer, and so on) and structured workflows so they build from specs and stories rather than free-form prompts." link={{ href: "https://docs.bmad-method.org", label: "docs" }}>BMad method</Term>) for enterprise fit and for fit with the team&apos;s existing day-to-day workflows, and <b>made the recommendation the team adopted</b>.</li>
-                <li><b>architected and built a BMad module</b> for the team&apos;s <Term def="a cloud platform for storing and processing large datasets, built around apache spark. widely used for enterprise data engineering.">databricks</Term> data product pipeline, covering the full cycle: vendor intake, <Term def="comparing a new data source against the existing table structure to see what fits as-is and what needs a new column or table.">schema fit/gap</Term>, spec generation, story creation, review, and <Term def="user acceptance testing: the final check where the people who requested the work confirm it does what they asked, before it goes to production.">UAT</Term> sign-off. it replaced a manually maintained, non-version-controlled excel source-to-target mapping with <b>a human- and machine-readable spec that lives in git</b>, can be updated by AI, and holds transformation logic out by design, so the spec stays a stable interface between requirements and the downstream <Term def="extract, transform, load: the code that pulls data from a source, reshapes it, and writes it into the destination tables.">ETL</Term> implementation.</li>
+                <li><b>defined AI-assisted development standards</b> for BI&amp;A&apos;s agentic data product initiative: standards that hold up in a regulated, <Term def="Protected Health Information: any health data that can be tied to a person. regulated under HIPAA in the US, so systems that touch it have strict rules about access, handling, and audit.">PHI</Term>-sensitive environment, with <Term def="writing a precise, reviewable specification of what a system should do before any code is written, then building (and having AI build) against that spec rather than against a conversation.">spec-driven development</Term> at the core.</li>
+                <li>evaluated spec-driven development frameworks (Superpowers, GitHub Spec Kit, and the <Term def="an open-source framework for AI-assisted software development. it gives AI agents defined roles (analyst, architect, developer, and so on) and structured workflows so they build from specs and stories rather than free-form prompts." link={{ href: "https://docs.bmad-method.org", label: "docs" }}>BMad Method</Term>) for enterprise fit and for fit with the team&apos;s existing day-to-day workflows, and <b>made the recommendation the team adopted</b>.</li>
+                <li><b>architected and built a BMad module</b> for the team&apos;s <Term def="a cloud platform for storing and processing large datasets, built around Apache Spark. widely used for enterprise data engineering.">Databricks</Term> data product pipeline, covering the full cycle: vendor intake, <Term def="comparing a new data source against the existing table structure to see what fits as-is and what needs a new column or table.">schema fit/gap</Term>, spec generation, story creation, review, and <Term def="User Acceptance Testing: the final check where the people who requested the work confirm it does what they asked, before it goes to production.">UAT</Term> sign-off. it replaced a manually maintained, non-version-controlled Excel source-to-target mapping with <b>a human- and machine-readable spec that lives in Git</b>, can be updated by AI, and holds transformation logic out by design, so the spec stays a stable interface between requirements and the downstream <Term def="Extract, Transform, Load: the code that pulls data from a source, reshapes it, and writes it into the destination tables.">ETL</Term> implementation.</li>
                 <li>estimated by the team&apos;s leads to <b>cut data product delivery time by two to four weeks</b>, by catching mapping discrepancies at spec review rather than at UAT, where a catch sends the modeling team back through a full rework cycle.</li>
-                <li>built with BMad&apos;s own module-builder tooling; packaged, validated, and wrote cross-platform install scripts for macOS, linux, and windows. delivered on a review branch as a <b>working <Term def="minimum viable product: a first working version with the core functionality in place, built to be tested and extended rather than to be final.">MVP</Term></b> for the team to carry forward.</li>
-                <li>wrote and produced a narrated explainer for the module with <b>remotion and ElevenLabs</b>, storyboarded across nine scenes with an automated layout audit so the design reference couldn&apos;t drift from the video.</li>
-                <li>worked on a <b>globally distributed agile team of 20+ engineers</b>, tracked in jira, across roughly 11 vendor sources covering prescription claims, call records, and medication dispense history. day-to-day in <b>GitHub and claude code</b>, with conventional commits and PR review throughout.</li>
+                <li>built with BMad&apos;s own module-builder tooling; packaged, validated, and wrote cross-platform install scripts for macOS, Linux, and Windows. delivered on a review branch as a <b>working <Term def="Minimum Viable Product: a first working version with the core functionality in place, built to be tested and extended rather than to be final.">MVP</Term></b> for the team to carry forward.</li>
+                <li>wrote and produced a narrated explainer for the module with <b>Remotion and ElevenLabs</b>, storyboarded across nine scenes with an automated layout audit so the design reference couldn&apos;t drift from the video.</li>
+                <li>worked on a <b>globally distributed agile team of 20+ engineers</b>, tracked in Jira, across roughly 11 vendor sources covering prescription claims, call records, and medication dispense history. day-to-day in <b>GitHub and Claude Code</b>, with conventional commits and PR review throughout.</li>
               </ul>
             </article>
           </section>
@@ -124,10 +124,10 @@ export default function Home() {
               </article>
               <article className="card" tabIndex={0}>
                 <div className="card-top">
-                  <h3>non-human vision</h3>
+                  <h3>Non-Human Vision</h3>
                   <TechIcons techs={["Unity", "Meta Quest"]} />
                 </div>
-                <p>a VR experience for meta quest&nbsp;3 that simulates how animals and insects perceive their surroundings, inspired by the toBeeView research project and built by a five-person agile team in software design &amp; development.</p>
+                <p>a VR experience for Meta Quest&nbsp;3 that simulates how animals and insects perceive their surroundings, inspired by the toBeeView research project and built by a five-person agile team in Software Design &amp; Development.</p>
                 <a className="card-link" href="https://github.com/abbyressner/csc324-group-project" target="_blank" rel="noopener noreferrer">view on GitHub →</a>
               </article>
             </div>
@@ -135,7 +135,7 @@ export default function Home() {
 
           <footer id="contact">
             <p>say hello at <a href="mailto:contact@abbyressner.com" aria-label="email contact at abbyressner dot com">contact [at] abbyressner [dot] com</a></p>
-            <p>© 2026 abigail ressner</p>
+            <p>© 2026 Abigail Ressner</p>
           </footer>
         </main>
       </div>

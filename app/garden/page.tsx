@@ -11,7 +11,7 @@ import { getNowPlaying, type NowPlaying } from "../../lib/nowPlaying";
 const pixelFont = Pixelify_Sans({ subsets: ["latin"], weight: ["500"], display: "swap" });
 
 export const metadata: Metadata = {
-  title: "garden — abigail ressner",
+  title: "garden — Abigail Ressner",
 };
 
 // Periodically-updated, not real-time — see lib/notion.ts and lib/nowPlaying.ts revalidate windows.
@@ -73,7 +73,7 @@ export default async function GardenPage() {
   return (
     <main className="garden-page">
       <CursorGlow />
-      <Link className="garden-back" href="/">← abigail ressner</Link>
+      <Link className="garden-back" href="/">← Abigail Ressner</Link>
 
       <header className="garden-header">
         <PixelGarden />
@@ -128,10 +128,10 @@ export default async function GardenPage() {
         <h2 className="label" id="archive-heading">archive</h2>
         <article className="card" tabIndex={0}>
           <div className="card-top">
-            <h3>pong</h3>
+            <h3>Pong</h3>
             <TechIcons techs={["Processing", "TypeScript"]} />
           </div>
-          <p>a one-player pong game i first wrote in processing in high school, ported to the web with its original bugs fixed. playable right here on the site.</p>
+          <p>a one-player Pong game i first wrote in Processing in high school, ported to the web with its original bugs fixed. playable right here on the site.</p>
           <Link className="card-link" href="/pong">play it →</Link>
         </article>
       </section>
