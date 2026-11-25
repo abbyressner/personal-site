@@ -37,8 +37,8 @@ const DarkModeToggle = () => {
       onClick={toggleDarkMode}
       className="icon-toggle"
       aria-pressed={!darkMode}
-      aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
-      title={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+      aria-label={darkMode ? "switch to light mode" : "switch to dark mode"}
+      title={darkMode ? "switch to light mode" : "switch to dark mode"}
     >
       {darkMode ? (
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24">

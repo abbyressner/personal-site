@@ -2,7 +2,7 @@
 import { useEffect, useRef } from "react";
 
 // Port of github.com/abbyressner/pong (Processing) to canvas. Original bugs fixed: the computer
-// paddle now moves at a capped speed so it can lose, the player paddle moves once per frame, the
+// paddle now reacts late, aims imperfectly and moves at a capped speed so it can lose, the player paddle moves once per frame, the
 // ball only bounces off a paddle it's moving toward (so it can't get stuck), and serves reset.
 const WIDTH = 800;
 const HEIGHT = 600;
@@ -12,6 +12,10 @@ const PADDLE_H = 140;
 const PADDLE_INSET = 24;
 const PLAYER_SPEED = 7;
 const CPU_SPEED = 4.5;
+const CPU_REACT_X = WIDTH * 0.6; // CPU only starts chasing once the ball crosses this line
+const CPU_MISS_RANGE = PADDLE_H * 0.55; // how far off-center the CPU aims each rally
+const SPEED_UP = 1.06; // ball gets a little faster with every paddle hit
+const MAX_SPEED_X = 11;
 const SERVE_SPEED = 5;
 
 type Paddle = { x: number; y: number; speedY: number };
@@ -53,6 +57,10 @@ export default function Pong() {
     let scoreRight = 0;
     let pointerY: number | null = null;
     let started = false;
+    let cpuAim = 0; // per-rally offset so the CPU doesn't center every return perfectly
+    const pickCpuAim = () => {
+      cpuAim = (Math.random() * 2 - 1) * CPU_MISS_RANGE;
+    };
 
     // reset the ball to the center, serving toward whoever just won the point
     const serve = (direction: number) => {
@@ -60,6 +68,7 @@ export default function Pong() {
       ball.y = HEIGHT / 2;
       ball.speedX = SERVE_SPEED * direction;
       ball.speedY = Math.random() * 6 - 3;
+      pickCpuAim();
     };
     const start = () => {
       if (started) return;
@@ -76,7 +85,7 @@ export default function Pong() {
     const hits = (p: Paddle) =>
       ball.y + BALL_DIAMETER / 2 > p.y - PADDLE_H / 2 && ball.y - BALL_DIAMETER / 2 < p.y + PADDLE_H / 2;
     const bounceOff = (p: Paddle) => {
-      ball.speedX = -ball.speedX;
+      ball.speedX = clamp(-ball.speedX * SPEED_UP, -MAX_SPEED_X, MAX_SPEED_X);
       ball.speedY = map(ball.y - p.y, -PADDLE_H / 2, PADDLE_H / 2, -8, 8);
     };
 
@@ -105,8 +114,11 @@ export default function Pong() {
       if (ball.y + BALL_DIAMETER / 2 > HEIGHT && ball.speedY > 0) ball.speedY = -ball.speedY;
       if (ball.y - BALL_DIAMETER / 2 < 0 && ball.speedY < 0) ball.speedY = -ball.speedY;
 
-      // computer paddle tracks the ball at a capped speed so it can be beaten
-      paddleLeft.y += clamp(ball.y - paddleLeft.y, -CPU_SPEED, CPU_SPEED);
+      // computer paddle: only chases once the ball is heading its way and past the reaction line,
+      // aims slightly off (cpuAim) and moves at a capped speed, otherwise drifts back to center
+      const chasing = ball.speedX < 0 && ball.x < CPU_REACT_X;
+      const target = chasing ? ball.y + cpuAim : HEIGHT / 2;
+      paddleLeft.y += clamp(target - paddleLeft.y, -CPU_SPEED, CPU_SPEED);
       keepOnScreen(paddleLeft);
 
       // only bounce when the ball is moving toward the paddle, so it can't get stuck
@@ -117,6 +129,7 @@ export default function Pong() {
       if (ball.speedX > 0 && ball.x + BALL_DIAMETER / 2 > paddleRight.x - PADDLE_W / 2 &&
           ball.x < paddleRight.x && hits(paddleRight)) {
         bounceOff(paddleRight);
+        pickCpuAim();
       }
     };
 

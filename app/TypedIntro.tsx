@@ -32,8 +32,8 @@ interface TypedIntroProps {
 }
 
 export default function TypedIntro({
-  greeting = "Hi! My name is Abby.",
-  lead = "I am",
+  greeting = "hi! my name is abby.",
+  lead = "i am",
   descriptors = [
     "engineer",
     "synesthete",

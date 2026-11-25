@@ -73,7 +73,7 @@ export default function Term({ children, def, link, modal }: TermProps) {
       </button>
       <span ref={pop} role="tooltip" id={id} className="term-pop">
         {def}
-        {modal && <span className="term-hint">Click to read more</span>}
+        {modal && <span className="term-hint">click to read more</span>}
         {link && (
           <>
             {" "}

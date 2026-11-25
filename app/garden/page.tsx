@@ -11,7 +11,7 @@ import { getNowPlaying, type NowPlaying } from "../../lib/nowPlaying";
 const pixelFont = Pixelify_Sans({ subsets: ["latin"], weight: ["500"], display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Garden — Abigail Ressner",
+  title: "garden — abigail ressner",
 };
 
 // Periodically-updated, not real-time — see lib/notion.ts and lib/nowPlaying.ts revalidate windows.
@@ -57,7 +57,7 @@ export default async function GardenPage() {
     ({ interested, favorites } = groupBySection(entries));
   } catch (err) {
     console.error("[garden] getGardenEntries failed:", err);
-    notionError = "Not wired up yet — set NOTION_API_KEY and NOTION_DATABASE_ID to pull this list live.";
+    notionError = "not wired up yet — set NOTION_API_KEY and NOTION_DATABASE_ID to pull this list live.";
   }
 
   let nowPlaying: NowPlaying | null = null;
@@ -67,13 +67,13 @@ export default async function GardenPage() {
     nowPlaying = await getNowPlaying();
   } catch (err) {
     console.error("[garden] getNowPlaying failed:", err);
-    nowPlayingError = "Not wired up yet — set NOTION_NOW_PLAYING_DATABASE_ID.";
+    nowPlayingError = "not wired up yet — set NOTION_NOW_PLAYING_DATABASE_ID.";
   }
 
   return (
     <main className="garden-page">
       <CursorGlow />
-      <Link className="garden-back" href="/">← Abigail Ressner</Link>
+      <Link className="garden-back" href="/">← abigail ressner</Link>
 
       <header className="garden-header">
         <PixelGarden />
@@ -81,21 +81,21 @@ export default async function GardenPage() {
       </header>
 
       <section aria-labelledby="interested-heading">
-        <h2 className="label" id="interested-heading">Currently interested in</h2>
-        {notionError ? <p className="garden-empty">{notionError}</p> : <LinkList entries={interested} emptyLabel="Nothing logged yet." />}
+        <h2 className="label" id="interested-heading">currently interested in</h2>
+        {notionError ? <p className="garden-empty">{notionError}</p> : <LinkList entries={interested} emptyLabel="nothing logged yet." />}
       </section>
 
       <section aria-labelledby="favorites-heading">
-        <h2 className="label" id="favorites-heading">Favorite repos &amp; agents/skills</h2>
-        {notionError ? <p className="garden-empty">{notionError}</p> : <LinkList entries={favorites} emptyLabel="Nothing logged yet." />}
+        <h2 className="label" id="favorites-heading">favorite repos &amp; agents/skills</h2>
+        {notionError ? <p className="garden-empty">{notionError}</p> : <LinkList entries={favorites} emptyLabel="nothing logged yet." />}
       </section>
 
       <section aria-labelledby="tracks-heading">
-        <h2 className="label" id="tracks-heading">Now playing</h2>
+        <h2 className="label" id="tracks-heading">now playing</h2>
         {nowPlayingError ? (
           <p className="garden-empty">{nowPlayingError}</p>
         ) : !nowPlaying ? (
-          <p className="garden-empty">Nothing logged yet.</p>
+          <p className="garden-empty">nothing logged yet.</p>
         ) : (
           <article className="card now-playing-card" tabIndex={0}>
             {nowPlaying.albumArt ? (
@@ -117,7 +117,7 @@ export default async function GardenPage() {
             <span className="meta now-playing-time">{timeAgo(nowPlaying.updatedAt)}</span>
             {nowPlaying.url ? (
               <a className="card-link now-playing-link" href={nowPlaying.url} target="_blank" rel="noopener noreferrer">
-                Listen →
+                listen →
               </a>
             ) : null}
           </article>
@@ -125,14 +125,14 @@ export default async function GardenPage() {
       </section>
 
       <section aria-labelledby="archive-heading">
-        <h2 className="label" id="archive-heading">Archive</h2>
+        <h2 className="label" id="archive-heading">archive</h2>
         <article className="card" tabIndex={0}>
           <div className="card-top">
             <h3>Pong</h3>
             <TechIcons techs={["Processing", "TypeScript"]} />
           </div>
-          <p>A one-player Pong game I first wrote in Processing in high school, ported to the web with its original bugs fixed. Playable right here on the site.</p>
-          <Link className="card-link" href="/pong">Play it →</Link>
+          <p>a one-player Pong game i first wrote in Processing in high school, ported to the web with its original bugs fixed. playable right here on the site.</p>
+          <Link className="card-link" href="/pong">play it →</Link>
         </article>
       </section>
     </main>
